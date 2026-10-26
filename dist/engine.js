@@ -1,9 +1,9 @@
-import {technique,radialVectors,upgradeSkill} from './progression.js';
-import {ARTIFACTS,collected} from './artifacts.js';
-import {heroDamage,enemyCombatStats,xpToNext,energyRegen,reserveEnemyAttack} from './combat.js';
-import {ensureQuests,recordQuestEvent,claimQuest,activeQuest,questAvailable,questReady,QUESTS} from './quests.js';
-import {partyArrival,repairPartyPositions} from './navigation.js';
-import {HEROES,REGIONS,ENEMIES,CLIPS,CHECKPOINTS,DEFAULT_PARTY,dist,clamp,stats,abilityStats,infinityFactor,travelAllowed} from './data.js';
+import {technique,radialVectors,upgradeSkill} from './progression.js?v=drawn-poses-1';
+import {ARTIFACTS,collected} from './artifacts.js?v=drawn-poses-1';
+import {heroDamage,enemyCombatStats,xpToNext,energyRegen,reserveEnemyAttack} from './combat.js?v=drawn-poses-1';
+import {ensureQuests,recordQuestEvent,claimQuest,activeQuest,questAvailable,questReady,QUESTS} from './quests.js?v=drawn-poses-1';
+import {partyArrival,repairPartyPositions} from './navigation.js?v=drawn-poses-1';
+import {HEROES,REGIONS,ENEMIES,CLIPS,CHECKPOINTS,DEFAULT_PARTY,dist,clamp,stats,abilityStats,infinityFactor,travelAllowed} from './data.js?v=drawn-poses-1';
 export function createState(mode='sandbox'){
  const sandbox=mode==='sandbox';const state={version:1,mode,region:'school',party:[...DEFAULT_PARTY],controlled:'gojo',heroes:Object.fromEntries(HEROES.map((h,i)=>[h.id,{id:h.id,...stats(),hp:525,ce:320,level:1,xp:0,x:i===0?0:i===1?-1:1,z:i===0?0:1,facing:{x:0,z:1},moving:false,gear:'blindfold',awake:0,gauge:0,infinity:false,cooldowns:[0,0,0],dashCd:0,specialCd:0,animTime:0,animElapsed:0,clip:0,sitting:false,iframes:0,attackCd:0,down:false,dashTime:0,pending:[]}])) ,recruited:sandbox?HEROES.map(h=>h.id):['gojo','yuji','megumi'],discovered:sandbox?CHECKPOINTS.map(c=>c.id):[],unlocked:sandbox?REGIONS.map(r=>r.id):['school','forest'],lastRest:'school-0',inventory:{wood:0,crystal:0,herb:0,gem:0},objects:REGIONS.flatMap((r,i)=>Array.from({length:9},(_,j)=>({id:`${r.id}-resource-${j}`,region:r.id,type:['tree','crystal','crop','tree','crystal','crop','lantern','crystal','tree'][j],x:[-6,5,-7,10,-10,4,3,-5,11][j],z:[5,4,0,-3,-4,7,5,-9,6][j],hits:0,depleted:false,regrow:0,growth:0,upgrade:0}))),clock:8,day:1,freeze:false,combatTimer:0,bossActive:false,bossSpawnedDay:-1,bossIndex:0,kills:0,harvests:0,regionKills:{},enemies:[],projectiles:[],hostiles:[],hazards:[],zones:[],elapsed:0,spawnTimer:0,restores:0};ensureQuests(state);return state;
 }
@@ -24,7 +24,7 @@ export class Engine{
  if(ctx.kind==='artifact'){const a=ctx.target;s.artifacts??=[];if(!collected(s,a.id)){s.artifacts.push(a.id);s.inventory.gem+=a.gems;this.grantExperience(a.xp);this.anim(p,21);this.say(`${a.name} recovered · +${a.gems} gems · +${a.xp} XP`);this.emit('effect',{type:'ring',x:a.x,z:a.z,color:'#ffd477',size:1.5,duration:.7});this.emit('save');}}
  if(ctx.kind==='exit')this.travel(ctx.target.region);
  if(ctx.kind==='resource'){const o=ctx.target;if(o.type==='lantern'){const w=5+o.upgrade*3,c=3+o.upgrade*2;if(s.inventory.wood<w||s.inventory.crystal<c)return this.say(`Needs ${w} Spirit Wood and ${c} Cursed Crystals.`,true);s.inventory.wood-=w;s.inventory.crystal-=c;o.upgrade++;this.say(`Purification lantern upgraded · level ${o.upgrade}`);this.progress();this.emit('effect',{type:'ring',x:o.x,z:o.z,color:'#b2f0c5',size:2+o.upgrade,duration:1});return;}
- if(p.attackCd>0)return;p.attackCd=.5;this.anim(p,o.type==='tree'?9:o.type==='crystal'?10:11);this.later(p,3/CLIPS[p.clip].fps,()=>this.harvest(o,p));}
+ if(p.attackCd>0)return;p.attackCd=.5;this.anim(p,o.type==='tree'?9:o.type==='crystal'?10:11);this.later(p,o.type==='crop'?.3:.25,()=>this.harvest(o,p));}
  if(ctx.kind==='npc'){this.anim(p,8);const id=ctx.target.id;if(!s.recruited.includes(id)){s.recruited.push(id);this.say(`${HEROES.find(h=>h.id===id).short}: “Count me in. Let's go together.”`);this.emit('party');}else this.say(({nobara:'Nobara: “After this, we are going shopping.”',yuta:'Yuta: “We look out for each other. Always.”',maki:'Maki: “Ready? Training waits for no one.”'})[id]||'“Good to see you. Stay close out there.”');}
  if(ctx.kind==='pet'){this.anim(p,8);this.emit('boop',ctx.target);this.say(`${ctx.target.name} seems very happy. ♡`);}
  if(ctx.kind==='revive'){if(s.combatTimer>0)return this.say('Clear the danger before reviving.',true);ctx.target.hp=ctx.target.maxHp*.35;this.anim(ctx.target,20);this.say('Back on your feet. We have got you.');}

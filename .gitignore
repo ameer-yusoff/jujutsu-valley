@@ -2,3 +2,5 @@ screenshot-*.png
 test-atlas.*
 node_modules/
 *.tar.gz
+
+__pycache__/

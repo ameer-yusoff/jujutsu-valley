@@ -1,10 +1,10 @@
-import * as T from './vendor/three.module.js';
-import {World,label,mat} from './world.js';
-import {Engine,createState,restoreState,serializable} from './engine.js';
-import {HEROES,REGIONS,dist} from './data.js';
-import {UI,$} from './ui.js';
-import {drawHero,companionCanvas,loadCharacterArt} from './sprites.js';
-import {Cinematics} from './cinematics.js';
+import * as T from './vendor/three.module.js?v=drawn-poses-1';
+import {World,label,mat} from './world.js?v=drawn-poses-1';
+import {Engine,createState,restoreState,serializable} from './engine.js?v=drawn-poses-1';
+import {HEROES,REGIONS,dist} from './data.js?v=drawn-poses-1';
+import {UI,$} from './ui.js?v=drawn-poses-1';
+import {drawHero,companionCanvas,loadCharacterArt} from './sprites.js?v=drawn-poses-1';
+import {Cinematics} from './cinematics.js?v=drawn-poses-1';
 const bootStarted=performance.now();
 let world,engine,ui;
 const keys=new Set(),stick={x:0,z:0};let soundOn=false,cinematics=true,audio=null,visibilityPaused=document.hidden,saveElapsed=0;
