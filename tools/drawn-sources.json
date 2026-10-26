@@ -1,0 +1,69 @@
+{
+  "motion": [
+    {
+      "id": "gojo",
+      "path": "dist/art/drawn-sources/gojo-motion.webp"
+    },
+    {
+      "id": "yuji",
+      "path": "dist/art/drawn-sources/yuji-motion.webp"
+    },
+    {
+      "id": "megumi",
+      "path": "dist/art/drawn-sources/megumi-motion.webp"
+    },
+    {
+      "id": "nobara",
+      "path": "dist/art/drawn-sources/nobara-motion.webp"
+    },
+    {
+      "id": "yuta",
+      "path": "dist/art/drawn-sources/yuta-motion.webp"
+    },
+    {
+      "id": "maki",
+      "path": "dist/art/drawn-sources/maki-motion.webp"
+    }
+  ],
+  "actions": [
+    {
+      "id": "gojo",
+      "path": "dist/art/drawn-sources/gojo-actions.webp"
+    },
+    {
+      "id": "yuji",
+      "path": "dist/art/drawn-sources/yuji-actions.webp"
+    },
+    {
+      "id": "megumi",
+      "path": "dist/art/drawn-sources/megumi-actions.webp"
+    },
+    {
+      "id": "nobara",
+      "path": "dist/art/drawn-sources/nobara-actions.webp"
+    },
+    {
+      "id": "yuta",
+      "path": "dist/art/drawn-sources/yuta-actions.webp"
+    },
+    {
+      "id": "maki",
+      "path": "dist/art/drawn-sources/maki-actions.webp"
+    }
+  ],
+  "enemies": [
+    {
+      "id": "enemies-a",
+      "path": "dist/art/drawn-sources/enemies-a.webp"
+    },
+    {
+      "id": "enemies-b",
+      "path": "dist/art/drawn-sources/enemies-b.webp"
+    },
+    {
+      "id": "companions",
+      "path": "dist/art/drawn-sources/companions.webp"
+    }
+  ],
+  "side": "dist/art/drawn-sources/side-walks.webp"
+}
