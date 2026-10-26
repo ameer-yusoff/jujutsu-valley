@@ -41,3 +41,9 @@
 - Added phase-offset follow-through and removed duplicate enemy walking frames.
 - Replaced frozen ultimate poses with staged action, animated summons and recovery.
 - Added rendered-frame duplicate auditing across 4,040 hero/enemy frames.
+
+## Research-led animation timing
+- Added a primary-source research report and production recommendations.
+- Applied variable pose timing to heroes, enemies, cinematics, sprite studio and exported frame metadata.
+- Clamped one-shot clips, preserved harvesting/cast contact times, and added short visual impact holds.
+- Reduced extreme joint rotation that separated sprite layers.
