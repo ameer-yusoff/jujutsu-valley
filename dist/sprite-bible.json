@@ -13697,5 +13697,14 @@
     "count": 15,
     "perRegion": 3,
     "persistent": true
+  },
+  "drawnAnimation": {
+    "manifest": "art/characters/drawn-manifest.json",
+    "inspector": "animation-library.html",
+    "renderer": "drawn-animation.js",
+    "source": "art/drawn-sources/",
+    "heroFramesPerClip": 8,
+    "leftWalk": "mirrored right",
+    "gojoHeadgear": "blindfold artwork shared across new poses"
   }
 }

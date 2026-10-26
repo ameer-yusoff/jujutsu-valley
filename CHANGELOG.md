@@ -47,3 +47,9 @@
 - Applied variable pose timing to heroes, enemies, cinematics, sprite studio and exported frame metadata.
 - Clamped one-shot clips, preserved harvesting/cast contact times, and added short visual impact holds.
 - Reduced extreme joint rotation that separated sprite layers.
+
+## New full-body drawn animation library
+- Added new character pose sheets following the existing designs for six heroes and eleven curses, bosses and companions.
+- Replaced procedural limb deformation with source-cell playback for movement, combat, casting and interactions.
+- Added dedicated side walks, distance-driven walk playback, eight-frame hero clips and an interactive frame inspector.
+- Retained original generated sheets and normalized transparent cells, including corrected Maki artwork.

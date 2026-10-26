@@ -101,3 +101,11 @@ One map control opens World / Location tabs. Local maps show terrain, collision 
 ## Frame quality and cinematic staging
 
 Secondary motion uses phase-offset head, torso and arm curves so return steps do not repeat outgoing poses. `tests/animation-audit.cjs` compares rendered PNG frames within every hero clip in four directions and every enemy clip (4,040 frames). This checks duplicate images, not subjective perfection. Ultimate cutscenes now last 2.6 seconds and progress through anticipation, release, character-specific combinations and recovery. Summons animate throughout; reduced-motion mode suppresses camera motion and speed lines.
+
+## Newly drawn pose library
+
+The runtime now prioritizes full-body drawings from `art/characters/drawn-manifest.json`. Six heroes have movement/combat/cast sheets, separate interaction sheets and dedicated side walks. Eleven curses, bosses and companions have new locomotion and action poses. Source artwork is retained under `art/drawn-sources/`; the normalization script thresholds transparency, isolates silhouettes, anchors and scales frames without articulating limbs.
+
+`drawn-animation.js` maps gameplay clips to these drawn rows. Left walking mirrors right walking. Cast techniques share each hero's cast sequence; effects and summoned actors distinguish skills. Deliberate pose holds are allowed, including defeated poses. Some sitting transitions reuse newly drawn crouch/sit poses because the generated sheet omitted that row. Gojo's new sheets use his blindfold design; separate sunglasses / unsealed-eyes drawings are not included in this set.
+
+All hero clips expose eight frames while preserving their original duration and combat/harvest contact times. Walking advances by traveled distance. The new library is inspected at `animation-library.html`; the studio and all 71 exports use the same drawn source cells. `tests/drawn-browser.cjs` verifies that a runtime walk frame exactly matches its source drawing, with no legacy limb deformation.
