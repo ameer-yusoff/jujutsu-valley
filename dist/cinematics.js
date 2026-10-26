@@ -1,5 +1,5 @@
-import {animationFrame} from './animation-timing.js?v=body-scale-4';
-import {HEROES,CLIPS} from './data.js?v=body-scale-4';import {drawHero,drawEnemyAnimation,companionCanvas} from './sprites.js?v=body-scale-4';
+import {animationFrame} from './animation-timing.js?v=solo-mastery-5';
+import {HEROES,CLIPS} from './data.js?v=solo-mastery-5';import {drawHero,drawEnemyAnimation,companionCanvas} from './sprites.js?v=solo-mastery-5';
 const C={gojo:'#b686fa',yuji:'#ef526d',megumi:'#91c8ba',nobara:'#eea582',yuta:'#b7a2e8',maki:'#b4d69f'};
 export class Cinematics{
  constructor(){this.active=null;this.enabled=true;this.reduced=matchMedia('(prefers-reduced-motion:reduce)').matches;}

@@ -1,6 +1,6 @@
-import {BODY_GEOMETRY} from './body-geometry.js?v=body-scale-4';
-import {frameDurations} from './animation-timing.js?v=body-scale-4';
-import {CLIPS,clamp} from './data.js?v=body-scale-4';
+import {BODY_GEOMETRY} from './body-geometry.js?v=solo-mastery-5';
+import {frameDurations} from './animation-timing.js?v=solo-mastery-5';
+import {CLIPS,clamp} from './data.js?v=solo-mastery-5';
 export function evaluatePose(clip,frame=0,direction='south',gear='blindfold'){
  const c=typeof clip==='number'?CLIPS[clip]:CLIPS.find(x=>x.id===clip)||CLIPS[0];
  const p=(frame%c.frames)/c.frames, a=p*Math.PI*2, k=c.kind;

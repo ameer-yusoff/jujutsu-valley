@@ -74,3 +74,11 @@
 - Packed detail artwork into a larger safety viewport, preserving world presentation and full defeat frames. Rebuilt all 71 compatibility exports.
 - Centralized the fixed hero ground collision radius and removed misleading inferred hand markers from Studio metadata.
 - Added frame-bound, scale, weapon-presence and real collision regression checks; versioned assets to bypass older cached sheets.
+
+## Solo Survival, signature mastery and mobile combat controls
+
+- Replaced AI party followers with a persistent six-sorcerer collection and one deployed hero. Survival quest seals unlock the roster; old ownership, levels and saves are preserved.
+- Added committed three-hit Survival combos, interruptible contacts, timed dodges, combat recovery rules, directional windups and visible stagger breaks. Dawn no longer grants free Survival levels.
+- Strengthened skill ranks with damage, cooldown, energy efficiency, break pressure and hero-specific control, healing, barrier, exposure and projectile effects.
+- Arranged Attack/Interact, skills 1–3 and Dash (4) in a mobile MOBA arc. Moved awakening to Actions/R, added a skill-tree shortcut, and enlarged the vertical pixel resource pouch.
+- Added simulation coverage for solo migration, collection, combos, cancellation, stagger, mastery effects and recovery; browser coverage checks controls, contextual switching, collection and skill trees at four screen sizes.

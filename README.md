@@ -15,3 +15,5 @@ Save data remains in browser localStorage. The Settings menu exports a portable 
 The HUD uses an indigo/cyan Jujutsu theme and displays whole in-game hours. Mobile Character Actions includes Infinity and headgear controls. Teleport arrivals and save recovery share collision rules with the map. See [CHANGELOG.md](CHANGELOG.md) for the latest fixes.
 
 The title screen now offers separate Sandbox and Survival adventures. Survival has ten tracked quests, five named boss hunts, shared squad XP, level-scaled damage, and enemy HP/CE systems. The current roster uses 46 detailed model views matching the battle poster; all 71 animated sheets are rebuilt in sprite-bible version 3.
+
+The latest Survival rules deploy one sorcerer at a time. Collect other playable heroes through quest reward seals, upgrade signature techniques, and use the mobile Attack/Interact button with skills 1–3 and Dash (4). See the final Solo Survival section in [the sprite and gameplay bible](docs/sprite-bible.md).

@@ -1,4 +1,4 @@
-import {characterImage,characterManifest} from './character-art.js?v=body-scale-4';
+import {characterImage,characterManifest} from './character-art.js?v=solo-mastery-5';
 export function drawnFrame(id,kind,phase,direction='south'){
  const motion=characterImage(id+'-motion'),actions=characterImage(id+'-actions');
  if(!motion)return null;const side=characterImage(id+'-sidewalk');

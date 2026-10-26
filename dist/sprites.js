@@ -1,11 +1,11 @@
-import {drawnFrame,paintDrawn} from './drawn-animation.js?v=body-scale-4';
-import {actionPose,articulated,signature,ACTION_STYLES} from './character-actions.js?v=body-scale-4';
-import {motion} from './animation-profiles.js?v=body-scale-4';
-import {HEROES,CLIPS} from './data.js?v=body-scale-4';
-import {evaluatePose,frameMetadata} from './pose.js?v=body-scale-4';
-import {DESIGNS,CATALOGUE_SOURCES} from './catalogue.js?v=body-scale-4';
-import {ENERGY_PROFILES} from './combat.js?v=body-scale-4';
-import {characterImage,characterManifest,loadCharacterArt} from './character-art.js?v=body-scale-4';
+import {drawnFrame,paintDrawn} from './drawn-animation.js?v=solo-mastery-5';
+import {actionPose,articulated,signature,ACTION_STYLES} from './character-actions.js?v=solo-mastery-5';
+import {motion} from './animation-profiles.js?v=solo-mastery-5';
+import {HEROES,CLIPS} from './data.js?v=solo-mastery-5';
+import {evaluatePose,frameMetadata} from './pose.js?v=solo-mastery-5';
+import {DESIGNS,CATALOGUE_SOURCES} from './catalogue.js?v=solo-mastery-5';
+import {ENERGY_PROFILES} from './combat.js?v=solo-mastery-5';
+import {characterImage,characterManifest,loadCharacterArt} from './character-art.js?v=solo-mastery-5';
 export {loadCharacterArt};
 function canvas(w=128,h=128){const c=document.createElement('canvas');c.width=w;c.height=h;return c;}
 const rasterCache=new Map();

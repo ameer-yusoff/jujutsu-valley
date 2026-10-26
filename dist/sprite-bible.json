@@ -1,5 +1,5 @@
 {
-  "version": 4,
+  "version": 5,
   "reference": "gojo-reference.jpg",
   "writtenBible": "sprite-bible.md",
   "heroes": [
@@ -13686,11 +13686,13 @@
       10
     ],
     "pointsPerLevel": 1,
-    "damagePerRank": 0.15,
-    "costPerRank": 0.08,
+    "damagePerRank": 0.25,
+    "costPerRank": -0.06,
     "signatureDamageShare": 0.65,
     "echoDamageShare": 0.35,
-    "echoHitsPerTargetPerCast": 1
+    "echoHitsPerTargetPerCast": 1,
+    "cooldownPerRank": -0.08,
+    "signatureEffects": "progression.js MASTERY; applied in Survival"
   },
   "motionProfiles": "animation-profiles.js",
   "artifacts": {
@@ -13721,5 +13723,11 @@
     "scaleAudit": "art/characters/body-scale-audit.json",
     "makiIdle": "armed polearm, eight frames",
     "handAnchors": "unannotated"
+  },
+  "roster": {
+    "active": 1,
+    "collection": "roster.js",
+    "migration": "preserve ownership and individual stats",
+    "temporaryTechniqueSummons": true
   }
 }
