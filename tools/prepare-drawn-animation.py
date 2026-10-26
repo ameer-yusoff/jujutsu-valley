@@ -27,13 +27,15 @@ def rows(path,count,boundaries=None):
  return out
 
 def save(id,kind,sequence):
- heights=[im.height for row in sequence for im in row];scale=104/np.percentile(heights,90)
- atlas=Image.new('RGBA',(1024,len(sequence)*128));bounds=[]
- for r,row in enumerate(sequence):
-  for f,im in enumerate(row):
-   factor=min(scale,120/im.width,112/im.height);sz=(max(1,round(im.width*factor)),max(1,round(im.height*factor)));im=im.resize(sz,Image.Resampling.NEAREST)
-   x=(128-im.width)//2;y=116-im.height;atlas.alpha_composite(im,(f*128+x,r*128+y));bounds.append([r,f,x,y,*sz])
- name=f'{id}-{kind}-drawn.png';atlas.save(root/name,optimize=True);assets[f'{id}-{kind}-south']={'file':name,'cell':128,'columns':8,'rows':len(sequence),'anchor':{'x':64,'y':116},'frames':bounds};report.append({'id':id,'kind':kind,'frames':len(sequence)*8})
+ for cell in [128,192]:
+  ratio=cell/128;heights=[im.height for row in sequence for im in row];scale=104*ratio/np.percentile(heights,90)
+  atlas=Image.new('RGBA',(8*cell,len(sequence)*cell));bounds=[]
+  for r,row in enumerate(sequence):
+   for f,original in enumerate(row):
+    factor=min(scale,120*ratio/original.width,112*ratio/original.height);sz=(max(1,round(original.width*factor)),max(1,round(original.height*factor)));im=original.resize(sz,Image.Resampling.NEAREST)
+    x=(cell-im.width)//2;y=round(116*ratio)-im.height;atlas.alpha_composite(im,(f*cell+x,r*cell+y));bounds.append([r,f,x,y,*sz])
+  suffix='-hd' if cell==192 else '';name=f'{id}-{kind}{suffix}-drawn.png';atlas.save(root/name,optimize=True);assets[f'{id}-{kind}{suffix}-south']={'file':name,'cell':cell,'columns':8,'rows':len(sequence),'anchor':{'x':cell//2,'y':round(116*ratio)},'frames':bounds}
+ report.append({'id':id,'kind':kind,'frames':len(sequence)*8})
 
 for item in data['motion']:
  id=item['id'];path=item['path'];raw=rows(path,5,[0,181,362,543,724,1086]) if id in ['gojo','maki'] else rows(path,6);Image.open(path).save(sources/f'{id}-motion.webp',lossless=True)
