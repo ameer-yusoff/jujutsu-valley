@@ -99,5 +99,6 @@
       ]
     ]
   },
-  "defeatRepair": "dist/art/drawn-sources/yuji-defeat-isolated.webp"
+  "defeatRepair": "dist/art/drawn-sources/yuji-defeat-isolated.webp",
+  "armedIdle": "dist/art/drawn-sources/maki-armed-idle.webp"
 }

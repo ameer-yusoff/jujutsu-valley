@@ -9566,6 +9566,102 @@
       ]
     },
     {
+      "source": "dist/art/drawn-sources/maki-armed-idle.webp",
+      "row": 0,
+      "column": 0,
+      "method": "whole-source-segmentation",
+      "bounds": [
+        10,
+        178,
+        271,
+        561
+      ]
+    },
+    {
+      "source": "dist/art/drawn-sources/maki-armed-idle.webp",
+      "row": 0,
+      "column": 1,
+      "method": "whole-source-segmentation",
+      "bounds": [
+        275,
+        178,
+        532,
+        561
+      ]
+    },
+    {
+      "source": "dist/art/drawn-sources/maki-armed-idle.webp",
+      "row": 0,
+      "column": 2,
+      "method": "whole-source-segmentation",
+      "bounds": [
+        548,
+        178,
+        798,
+        561
+      ]
+    },
+    {
+      "source": "dist/art/drawn-sources/maki-armed-idle.webp",
+      "row": 0,
+      "column": 3,
+      "method": "whole-source-segmentation",
+      "bounds": [
+        813,
+        178,
+        1071,
+        561
+      ]
+    },
+    {
+      "source": "dist/art/drawn-sources/maki-armed-idle.webp",
+      "row": 0,
+      "column": 4,
+      "method": "whole-source-segmentation",
+      "bounds": [
+        1088,
+        176,
+        1342,
+        561
+      ]
+    },
+    {
+      "source": "dist/art/drawn-sources/maki-armed-idle.webp",
+      "row": 0,
+      "column": 5,
+      "method": "whole-source-segmentation",
+      "bounds": [
+        1356,
+        178,
+        1613,
+        561
+      ]
+    },
+    {
+      "source": "dist/art/drawn-sources/maki-armed-idle.webp",
+      "row": 0,
+      "column": 6,
+      "method": "whole-source-segmentation",
+      "bounds": [
+        1628,
+        178,
+        1886,
+        561
+      ]
+    },
+    {
+      "source": "dist/art/drawn-sources/maki-armed-idle.webp",
+      "row": 0,
+      "column": 7,
+      "method": "whole-source-segmentation",
+      "bounds": [
+        1901,
+        178,
+        2156,
+        561
+      ]
+    },
+    {
       "source": "dist/art/drawn-sources/enemies-a.webp",
       "row": 0,
       "column": 0,

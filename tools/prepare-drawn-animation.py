@@ -3,9 +3,10 @@ from PIL import Image
 from pathlib import Path
 import numpy as np,json,sys
 from scipy import ndimage
+from body_metrics import body_height,imported_pose
 root=Path('dist/art/characters');sources=Path('dist/art/drawn-sources');sources.mkdir(exist_ok=True)
 data=json.load(open(sys.argv[1]));assets={};report=[]
-audit=[];replacements={};extracted=[]
+audit=[];replacements={};extracted=[];scale_audit=[]
 if data.get('repairs'):
  repair=Image.open(data['repairs']['path']).convert('RGBA')
  for slot,target in enumerate(data['repairs']['targets']):
@@ -67,17 +68,45 @@ def rows(path,count,boundaries=None):
     valid=[i for i,v in enumerate(row) if v is not None]
     if not valid:raise ValueError(f'No safe poses in {path} row {r}')
     row[col]=row[min(valid,key=lambda i:abs(i-col))].copy()
+ for r,row in enumerate(out):
+  hero=Path(path).name.split('-')[0]
+  if hero in ['gojo','yuji','megumi','nobara','yuta','maki']:
+   for col,frame in enumerate(row):
+    if (Path(path).name,r,col) in replacements:row[col]=imported_pose(frame,row[0],hero)
+  else:
+   for col,frame in enumerate(row):
+    if (Path(path).name,r,col) in replacements:
+     factor=row[0].height/frame.height;row[col]=frame.resize((max(1,round(frame.width*factor)),row[0].height),Image.Resampling.NEAREST)
  return out
 
 def save(id,kind,sequence):
- for cell in [128,192]:
-  ratio=cell/128;heights=[im.height for row in sequence for im in row];scale=104*ratio/np.percentile(heights,90)
-  atlas=Image.new('RGBA',(8*cell,len(sequence)*cell));bounds=[]
-  for r,row in enumerate(sequence):
-   for f,original in enumerate(row):
-    factor=min(scale,120*ratio/original.width,112*ratio/original.height);sz=(max(1,round(original.width*factor)),max(1,round(original.height*factor)));im=original.resize(sz,Image.Resampling.NEAREST)
-    x=(cell-im.width)//2;y=round(116*ratio)-im.height;atlas.alpha_composite(im,(f*cell+x,r*cell+y));bounds.append([r,f,x,y,*sz])
-  suffix='-hd' if cell==192 else '';name=f'{id}-{kind}{suffix}-drawn.png';atlas.save(root/name,optimize=True);assets[f'{id}-{kind}{suffix}-south']={'file':name,'cell':cell,'columns':8,'rows':len(sequence),'anchor':{'x':cell//2,'y':round(116*ratio)},'frames':bounds}
+ hero=id in ['gojo','yuji','megumi','nobara','yuta','maki'];prepared=[]
+ for r,row in enumerate(sequence):
+  reference=body_height(row[0],id)[0] if hero else row[0].height
+  factor=156/reference
+  for f,original in enumerate(row):
+   # One scale per sequence. No per-frame fit based on tools/effects.
+   w=max(1,round(original.width*factor));h=max(1,round(original.height*factor));im=original.resize((w,h),Image.Resampling.NEAREST)
+   mask=np.array(original)[:,:,3]>128;counts=mask.sum(axis=1);solid=np.flatnonzero(counts>=max(4,counts.max()*.08));bottom=int(solid[-1]+1) if hero else original.height
+   yy,xx=np.where(mask[max(0,bottom-int(reference*.16)):bottom]);anchor_x=float(np.mean(xx)) if len(xx) else original.width/2
+   anchor=[round(anchor_x*factor),round(bottom*factor)];left=256-anchor[0];top=464-anchor[1]
+   if left<0 or top<0 or left+w>512 or top+h>512:raise ValueError(f'Pose exceeds padded viewport: {id} {kind} {r} {f} {w}x{h}')
+   metric={'row':r,'frame':f,'scale':float(factor),'referenceBodyPixels':reference,'normalizedReferenceBodyPixels':round(reference*factor),'bounds':[left,top,w,h],'anchor':anchor}
+   prepared.append((im,metric));scale_audit.append({'id':id,'kind':kind,**metric})
+ # Pack the trimmed sprites so transparent safety space is not decoded in RAM.
+ width=1536;x=y=shelf=0;placements=[]
+ for im,m in prepared:
+  if x+im.width+4>width:y+=shelf+4;x=0;shelf=0
+  placements.append((x,y));x+=im.width+4;shelf=max(shelf,im.height)
+ height=y+shelf+4;atlas=Image.new('RGBA',(width,height));rects=[]
+ for (im,m),(x,y) in zip(prepared,placements):
+  atlas.alpha_composite(im,(x,y));rects.append({'x':x,'y':y,'w':im.width,'h':im.height,**m})
+ name=f'{id}-{kind}-hd-drawn.png';atlas.save(root/name,optimize=True);assets[f'{id}-{kind}-hd-south']={'file':name,'packed':True,'viewport':512,'cell':192,'width':width,'height':height,'columns':8,'rows':len(sequence),'anchor':{'x':256,'y':464},'frameRects':rects}
+ # Uniformly scaled compatibility sheets: every frame uses the same viewport.
+ standard=Image.new('RGBA',(1024,len(sequence)*128));bounds=[]
+ for im,m in prepared:
+  tile=Image.new('RGBA',(512,512));tile.alpha_composite(im,(m['bounds'][0],m['bounds'][1]));tile=tile.resize((128,128),Image.Resampling.NEAREST);standard.alpha_composite(tile,(m['frame']*128,m['row']*128));box=tile.getbbox();bounds.append([m['row'],m['frame'],box[0],box[1],box[2]-box[0],box[3]-box[1]])
+ name=f'{id}-{kind}-drawn.png';standard.save(root/name,optimize=True);assets[f'{id}-{kind}-south']={'file':name,'cell':128,'columns':8,'rows':len(sequence),'anchor':{'x':64,'y':116},'frames':bounds}
  report.append({'id':id,'kind':kind,'frames':len(sequence)*8})
 
 for item in data['motion']:
@@ -94,17 +123,23 @@ for item in data['actions']:
   motionPath=next(x['path'] for x in data['motion'] if x['id']==id);mixed=rows(motionPath,6)[5]
   seated=mixed[6];kneel=mixed[1];reach=mixed[0]
   sit=[raw[0][0],reach,kneel,seated,seated,kneel,reach,raw[0][-1]]
-  raw=raw[:5]+[sit]+raw[5:]
+  raw=raw[:5]+[[imported_pose(frame,raw[0][0],id) for frame in sit]]+raw[5:]
+ if id=='maki' and data.get('armedIdle'):raw[0]=rows(data['armedIdle'],1)[0]
  save(id,'actions',raw)
 for item in data['enemies']:
  ids={'enemies-a':['finger','jogo','hanami','mahito'],'enemies-b':['sukuna','fly','lurker','rika'],'companions':['panda','dog','nue','rika']}[item['id']];raw=rows(item['path'],8);Image.open(item['path']).save(sources/f"{item['id']}.webp",lossless=True)
  for i,id in enumerate(ids):save(id,'motion',raw[i*2:i*2+2])
 if data.get('side'):
  raw=rows(data['side'],6);Image.open(data['side']).save(sources/'side-walks.webp',lossless=True)
- for i,id in enumerate(['gojo','yuji','megumi','nobara','yuta','maki']):save(id,'sidewalk',[raw[i]])
+ for i,id in enumerate(['gojo','yuji','megumi','nobara','yuta','maki']):
+  if data.get('sidePatches') and id in data['sidePatches']['ids']:continue
+  save(id,'sidewalk',[raw[i]])
 if data.get('sidePatches'):
  patch=data['sidePatches'];raw=rows(patch['path'],len(patch['ids']))
  for i,id in enumerate(patch['ids']):save(id,'sidewalk',[raw[i]])
 # Discard hold warnings for sequences superseded by reviewed clean artwork.
 audit=[a for a in audit if not (a['source'].endswith('/side-walks.webp') and a['row']>=3) and not (a['source'].endswith('/maki-motion.webp') and a['row']==3)]
 manifest={'version':1,'style':'newly-drawn-poster-chibi','assets':assets,'coverage':report};(root/'drawn-manifest.json').write_text(json.dumps(manifest,indent=2));print(json.dumps({'coverage':report,'clippingAlerts':audit}));Path('/tmp/drawn-clipping-audit.json').write_text(json.dumps(audit,indent=2));(root/'extraction-audit.json').write_text(json.dumps({'method':'whole silhouettes with marker watershed for touching figures','extractedFrames':extracted,'defeatRepair':data.get('defeatRepair'), 'reviewedReplacements':['Maki combat uses isolated polearm and cast drawings','Nobara water row omits seated source poses'],'safePoseHolds':audit,'repairedFrames':data.get('repairs',{}),'isolatedSideWalks':data.get('sidePatches',{})},indent=2))
+
+scale_audit=list({(f['id'],f['kind'],f['row'],f['frame']):f for f in scale_audit}.values())
+(root/'body-scale-audit.json').write_text(json.dumps({'viewport':512,'targetReferenceBodyPixels':156,'frames':scale_audit,'weaponScaleClamping':False},indent=2))
