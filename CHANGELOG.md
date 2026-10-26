@@ -60,3 +60,9 @@
 - Build 192px detail variants directly from source drawings and render the world at device pixel density.
 - Correct pointer projection for the sharper canvas and retain the same world scale.
 - Add regression checks for walk frame progression, foot silhouettes, idle direction and detail resolution.
+
+## Sprite contamination and clipping repairs
+- Replace uniform fallback cropping with complete-silhouette extraction and separation of touching figures.
+- Restore Gojo's boots and remove neighboring feet above Yuta.
+- Add isolated side-walk sources and replace additional crowded or malformed action poses found during review.
+- Rebuild standard/detail sheets and sprite exports with source provenance and regression checks.

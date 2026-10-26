@@ -115,3 +115,11 @@ All hero clips expose eight frames while preserving their original duration and 
 The side-walk source now includes narrow passing poses in columns 3 and 7, rather than eight mostly extended strides. Browser regression checks all six heroes play all eight frames and measures the foot silhouette: a passing pose must be narrower than 80% of the contact pose. Stopped heroes select the south-facing idle clip regardless of their last walking direction.
 
 Every drawn sheet now includes a 192px-cell detail variant rebuilt from the original source artwork; standard 128px sheets remain available for exports. Runtime loads only the detail variants, retains a bounded raster cache, and uses 192px character canvases. World rendering uses device pixel density capped at 2 instead of half-resolution rendering; world scale and pointer projection are preserved. A 390px phone at DPR2 now has a 780px world canvas (previously 195px). Detail rendering preserves more source pixels; it does not invent additional source detail. Frame inspector previews also use 192px canvases.
+
+## Silhouette extraction repairs
+
+The previous normalizer inferred row cuts from the first column and silently fell back to equal-height cells when neighboring bodies touched. This cut Gojo's feet and included neighboring boots above Yuta. Extraction now finds body seeds across columns and recovers complete silhouettes from the full source image, using marker watershed to separate touching figures. It never slices all figures with a uniform row fallback.
+
+A separate, spacious three-row source replaces Nobara/Yuta/Maki side walks. Replacement drawings repair four crowded tool/curse cells and Yuji's duplicated defeat head. Maki's combat/cast sequences reuse her clean isolated action rows, and Nobara's watering sequence excludes seated poses accidentally present in its source row. Two unavailable enemy source poses use explicit clean neighboring pose holds; these are recorded, not silently treated as new drawings.
+
+`art/characters/extraction-audit.json` records source bounds, replacement sources and safe pose holds. Regression checks cover Gojo's original full foot bounds, all 48 hero side-walk bodies, and boot-colored contamination above Yuta's head. Standard/detail sheets and all 71 exports are rebuilt from the repaired extraction.
