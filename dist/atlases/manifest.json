@@ -1,0 +1,549 @@
+[
+  {
+    "hero": "gojo",
+    "gear": "blindfold",
+    "direction": "south",
+    "supplemental": false,
+    "png": "atlases/gojo-blindfold-south.png",
+    "metadata": "atlases/gojo-blindfold-south.json"
+  },
+  {
+    "hero": "gojo",
+    "gear": "blindfold",
+    "direction": "south",
+    "supplemental": true,
+    "png": "atlases/gojo-blindfold-south-extra.png",
+    "metadata": "atlases/gojo-blindfold-south-extra.json"
+  },
+  {
+    "hero": "gojo",
+    "gear": "blindfold",
+    "direction": "north",
+    "supplemental": false,
+    "png": "atlases/gojo-blindfold-north.png",
+    "metadata": "atlases/gojo-blindfold-north.json"
+  },
+  {
+    "hero": "gojo",
+    "gear": "blindfold",
+    "direction": "north",
+    "supplemental": true,
+    "png": "atlases/gojo-blindfold-north-extra.png",
+    "metadata": "atlases/gojo-blindfold-north-extra.json"
+  },
+  {
+    "hero": "gojo",
+    "gear": "blindfold",
+    "direction": "side",
+    "supplemental": false,
+    "png": "atlases/gojo-blindfold-side.png",
+    "metadata": "atlases/gojo-blindfold-side.json"
+  },
+  {
+    "hero": "gojo",
+    "gear": "blindfold",
+    "direction": "side",
+    "supplemental": true,
+    "png": "atlases/gojo-blindfold-side-extra.png",
+    "metadata": "atlases/gojo-blindfold-side-extra.json"
+  },
+  {
+    "hero": "gojo",
+    "gear": "blindfold",
+    "direction": "west",
+    "supplemental": false,
+    "png": "atlases/gojo-blindfold-west.png",
+    "metadata": "atlases/gojo-blindfold-west.json"
+  },
+  {
+    "hero": "gojo",
+    "gear": "blindfold",
+    "direction": "west",
+    "supplemental": true,
+    "png": "atlases/gojo-blindfold-west-extra.png",
+    "metadata": "atlases/gojo-blindfold-west-extra.json"
+  },
+  {
+    "hero": "gojo",
+    "gear": "sunglasses",
+    "direction": "south",
+    "supplemental": false,
+    "png": "atlases/gojo-sunglasses-south.png",
+    "metadata": "atlases/gojo-sunglasses-south.json"
+  },
+  {
+    "hero": "gojo",
+    "gear": "sunglasses",
+    "direction": "south",
+    "supplemental": true,
+    "png": "atlases/gojo-sunglasses-south-extra.png",
+    "metadata": "atlases/gojo-sunglasses-south-extra.json"
+  },
+  {
+    "hero": "gojo",
+    "gear": "sunglasses",
+    "direction": "north",
+    "supplemental": false,
+    "png": "atlases/gojo-sunglasses-north.png",
+    "metadata": "atlases/gojo-sunglasses-north.json"
+  },
+  {
+    "hero": "gojo",
+    "gear": "sunglasses",
+    "direction": "north",
+    "supplemental": true,
+    "png": "atlases/gojo-sunglasses-north-extra.png",
+    "metadata": "atlases/gojo-sunglasses-north-extra.json"
+  },
+  {
+    "hero": "gojo",
+    "gear": "sunglasses",
+    "direction": "side",
+    "supplemental": false,
+    "png": "atlases/gojo-sunglasses-side.png",
+    "metadata": "atlases/gojo-sunglasses-side.json"
+  },
+  {
+    "hero": "gojo",
+    "gear": "sunglasses",
+    "direction": "side",
+    "supplemental": true,
+    "png": "atlases/gojo-sunglasses-side-extra.png",
+    "metadata": "atlases/gojo-sunglasses-side-extra.json"
+  },
+  {
+    "hero": "gojo",
+    "gear": "sunglasses",
+    "direction": "west",
+    "supplemental": false,
+    "png": "atlases/gojo-sunglasses-west.png",
+    "metadata": "atlases/gojo-sunglasses-west.json"
+  },
+  {
+    "hero": "gojo",
+    "gear": "sunglasses",
+    "direction": "west",
+    "supplemental": true,
+    "png": "atlases/gojo-sunglasses-west-extra.png",
+    "metadata": "atlases/gojo-sunglasses-west-extra.json"
+  },
+  {
+    "hero": "gojo",
+    "gear": "eyes",
+    "direction": "south",
+    "supplemental": false,
+    "png": "atlases/gojo-eyes-south.png",
+    "metadata": "atlases/gojo-eyes-south.json"
+  },
+  {
+    "hero": "gojo",
+    "gear": "eyes",
+    "direction": "south",
+    "supplemental": true,
+    "png": "atlases/gojo-eyes-south-extra.png",
+    "metadata": "atlases/gojo-eyes-south-extra.json"
+  },
+  {
+    "hero": "gojo",
+    "gear": "eyes",
+    "direction": "north",
+    "supplemental": false,
+    "png": "atlases/gojo-eyes-north.png",
+    "metadata": "atlases/gojo-eyes-north.json"
+  },
+  {
+    "hero": "gojo",
+    "gear": "eyes",
+    "direction": "north",
+    "supplemental": true,
+    "png": "atlases/gojo-eyes-north-extra.png",
+    "metadata": "atlases/gojo-eyes-north-extra.json"
+  },
+  {
+    "hero": "gojo",
+    "gear": "eyes",
+    "direction": "side",
+    "supplemental": false,
+    "png": "atlases/gojo-eyes-side.png",
+    "metadata": "atlases/gojo-eyes-side.json"
+  },
+  {
+    "hero": "gojo",
+    "gear": "eyes",
+    "direction": "side",
+    "supplemental": true,
+    "png": "atlases/gojo-eyes-side-extra.png",
+    "metadata": "atlases/gojo-eyes-side-extra.json"
+  },
+  {
+    "hero": "gojo",
+    "gear": "eyes",
+    "direction": "west",
+    "supplemental": false,
+    "png": "atlases/gojo-eyes-west.png",
+    "metadata": "atlases/gojo-eyes-west.json"
+  },
+  {
+    "hero": "gojo",
+    "gear": "eyes",
+    "direction": "west",
+    "supplemental": true,
+    "png": "atlases/gojo-eyes-west-extra.png",
+    "metadata": "atlases/gojo-eyes-west-extra.json"
+  },
+  {
+    "hero": "yuji",
+    "gear": "blindfold",
+    "direction": "south",
+    "supplemental": false,
+    "png": "atlases/yuji-blindfold-south.png",
+    "metadata": "atlases/yuji-blindfold-south.json"
+  },
+  {
+    "hero": "yuji",
+    "gear": "blindfold",
+    "direction": "south",
+    "supplemental": true,
+    "png": "atlases/yuji-blindfold-south-extra.png",
+    "metadata": "atlases/yuji-blindfold-south-extra.json"
+  },
+  {
+    "hero": "yuji",
+    "gear": "blindfold",
+    "direction": "north",
+    "supplemental": false,
+    "png": "atlases/yuji-blindfold-north.png",
+    "metadata": "atlases/yuji-blindfold-north.json"
+  },
+  {
+    "hero": "yuji",
+    "gear": "blindfold",
+    "direction": "north",
+    "supplemental": true,
+    "png": "atlases/yuji-blindfold-north-extra.png",
+    "metadata": "atlases/yuji-blindfold-north-extra.json"
+  },
+  {
+    "hero": "yuji",
+    "gear": "blindfold",
+    "direction": "side",
+    "supplemental": false,
+    "png": "atlases/yuji-blindfold-side.png",
+    "metadata": "atlases/yuji-blindfold-side.json"
+  },
+  {
+    "hero": "yuji",
+    "gear": "blindfold",
+    "direction": "side",
+    "supplemental": true,
+    "png": "atlases/yuji-blindfold-side-extra.png",
+    "metadata": "atlases/yuji-blindfold-side-extra.json"
+  },
+  {
+    "hero": "yuji",
+    "gear": "blindfold",
+    "direction": "west",
+    "supplemental": false,
+    "png": "atlases/yuji-blindfold-west.png",
+    "metadata": "atlases/yuji-blindfold-west.json"
+  },
+  {
+    "hero": "yuji",
+    "gear": "blindfold",
+    "direction": "west",
+    "supplemental": true,
+    "png": "atlases/yuji-blindfold-west-extra.png",
+    "metadata": "atlases/yuji-blindfold-west-extra.json"
+  },
+  {
+    "hero": "megumi",
+    "gear": "blindfold",
+    "direction": "south",
+    "supplemental": false,
+    "png": "atlases/megumi-blindfold-south.png",
+    "metadata": "atlases/megumi-blindfold-south.json"
+  },
+  {
+    "hero": "megumi",
+    "gear": "blindfold",
+    "direction": "south",
+    "supplemental": true,
+    "png": "atlases/megumi-blindfold-south-extra.png",
+    "metadata": "atlases/megumi-blindfold-south-extra.json"
+  },
+  {
+    "hero": "megumi",
+    "gear": "blindfold",
+    "direction": "north",
+    "supplemental": false,
+    "png": "atlases/megumi-blindfold-north.png",
+    "metadata": "atlases/megumi-blindfold-north.json"
+  },
+  {
+    "hero": "megumi",
+    "gear": "blindfold",
+    "direction": "north",
+    "supplemental": true,
+    "png": "atlases/megumi-blindfold-north-extra.png",
+    "metadata": "atlases/megumi-blindfold-north-extra.json"
+  },
+  {
+    "hero": "megumi",
+    "gear": "blindfold",
+    "direction": "side",
+    "supplemental": false,
+    "png": "atlases/megumi-blindfold-side.png",
+    "metadata": "atlases/megumi-blindfold-side.json"
+  },
+  {
+    "hero": "megumi",
+    "gear": "blindfold",
+    "direction": "side",
+    "supplemental": true,
+    "png": "atlases/megumi-blindfold-side-extra.png",
+    "metadata": "atlases/megumi-blindfold-side-extra.json"
+  },
+  {
+    "hero": "megumi",
+    "gear": "blindfold",
+    "direction": "west",
+    "supplemental": false,
+    "png": "atlases/megumi-blindfold-west.png",
+    "metadata": "atlases/megumi-blindfold-west.json"
+  },
+  {
+    "hero": "megumi",
+    "gear": "blindfold",
+    "direction": "west",
+    "supplemental": true,
+    "png": "atlases/megumi-blindfold-west-extra.png",
+    "metadata": "atlases/megumi-blindfold-west-extra.json"
+  },
+  {
+    "hero": "nobara",
+    "gear": "blindfold",
+    "direction": "south",
+    "supplemental": false,
+    "png": "atlases/nobara-blindfold-south.png",
+    "metadata": "atlases/nobara-blindfold-south.json"
+  },
+  {
+    "hero": "nobara",
+    "gear": "blindfold",
+    "direction": "south",
+    "supplemental": true,
+    "png": "atlases/nobara-blindfold-south-extra.png",
+    "metadata": "atlases/nobara-blindfold-south-extra.json"
+  },
+  {
+    "hero": "nobara",
+    "gear": "blindfold",
+    "direction": "north",
+    "supplemental": false,
+    "png": "atlases/nobara-blindfold-north.png",
+    "metadata": "atlases/nobara-blindfold-north.json"
+  },
+  {
+    "hero": "nobara",
+    "gear": "blindfold",
+    "direction": "north",
+    "supplemental": true,
+    "png": "atlases/nobara-blindfold-north-extra.png",
+    "metadata": "atlases/nobara-blindfold-north-extra.json"
+  },
+  {
+    "hero": "nobara",
+    "gear": "blindfold",
+    "direction": "side",
+    "supplemental": false,
+    "png": "atlases/nobara-blindfold-side.png",
+    "metadata": "atlases/nobara-blindfold-side.json"
+  },
+  {
+    "hero": "nobara",
+    "gear": "blindfold",
+    "direction": "side",
+    "supplemental": true,
+    "png": "atlases/nobara-blindfold-side-extra.png",
+    "metadata": "atlases/nobara-blindfold-side-extra.json"
+  },
+  {
+    "hero": "nobara",
+    "gear": "blindfold",
+    "direction": "west",
+    "supplemental": false,
+    "png": "atlases/nobara-blindfold-west.png",
+    "metadata": "atlases/nobara-blindfold-west.json"
+  },
+  {
+    "hero": "nobara",
+    "gear": "blindfold",
+    "direction": "west",
+    "supplemental": true,
+    "png": "atlases/nobara-blindfold-west-extra.png",
+    "metadata": "atlases/nobara-blindfold-west-extra.json"
+  },
+  {
+    "hero": "yuta",
+    "gear": "blindfold",
+    "direction": "south",
+    "supplemental": false,
+    "png": "atlases/yuta-blindfold-south.png",
+    "metadata": "atlases/yuta-blindfold-south.json"
+  },
+  {
+    "hero": "yuta",
+    "gear": "blindfold",
+    "direction": "south",
+    "supplemental": true,
+    "png": "atlases/yuta-blindfold-south-extra.png",
+    "metadata": "atlases/yuta-blindfold-south-extra.json"
+  },
+  {
+    "hero": "yuta",
+    "gear": "blindfold",
+    "direction": "north",
+    "supplemental": false,
+    "png": "atlases/yuta-blindfold-north.png",
+    "metadata": "atlases/yuta-blindfold-north.json"
+  },
+  {
+    "hero": "yuta",
+    "gear": "blindfold",
+    "direction": "north",
+    "supplemental": true,
+    "png": "atlases/yuta-blindfold-north-extra.png",
+    "metadata": "atlases/yuta-blindfold-north-extra.json"
+  },
+  {
+    "hero": "yuta",
+    "gear": "blindfold",
+    "direction": "side",
+    "supplemental": false,
+    "png": "atlases/yuta-blindfold-side.png",
+    "metadata": "atlases/yuta-blindfold-side.json"
+  },
+  {
+    "hero": "yuta",
+    "gear": "blindfold",
+    "direction": "side",
+    "supplemental": true,
+    "png": "atlases/yuta-blindfold-side-extra.png",
+    "metadata": "atlases/yuta-blindfold-side-extra.json"
+  },
+  {
+    "hero": "yuta",
+    "gear": "blindfold",
+    "direction": "west",
+    "supplemental": false,
+    "png": "atlases/yuta-blindfold-west.png",
+    "metadata": "atlases/yuta-blindfold-west.json"
+  },
+  {
+    "hero": "yuta",
+    "gear": "blindfold",
+    "direction": "west",
+    "supplemental": true,
+    "png": "atlases/yuta-blindfold-west-extra.png",
+    "metadata": "atlases/yuta-blindfold-west-extra.json"
+  },
+  {
+    "hero": "maki",
+    "gear": "blindfold",
+    "direction": "south",
+    "supplemental": false,
+    "png": "atlases/maki-blindfold-south.png",
+    "metadata": "atlases/maki-blindfold-south.json"
+  },
+  {
+    "hero": "maki",
+    "gear": "blindfold",
+    "direction": "south",
+    "supplemental": true,
+    "png": "atlases/maki-blindfold-south-extra.png",
+    "metadata": "atlases/maki-blindfold-south-extra.json"
+  },
+  {
+    "hero": "maki",
+    "gear": "blindfold",
+    "direction": "north",
+    "supplemental": false,
+    "png": "atlases/maki-blindfold-north.png",
+    "metadata": "atlases/maki-blindfold-north.json"
+  },
+  {
+    "hero": "maki",
+    "gear": "blindfold",
+    "direction": "north",
+    "supplemental": true,
+    "png": "atlases/maki-blindfold-north-extra.png",
+    "metadata": "atlases/maki-blindfold-north-extra.json"
+  },
+  {
+    "hero": "maki",
+    "gear": "blindfold",
+    "direction": "side",
+    "supplemental": false,
+    "png": "atlases/maki-blindfold-side.png",
+    "metadata": "atlases/maki-blindfold-side.json"
+  },
+  {
+    "hero": "maki",
+    "gear": "blindfold",
+    "direction": "side",
+    "supplemental": true,
+    "png": "atlases/maki-blindfold-side-extra.png",
+    "metadata": "atlases/maki-blindfold-side-extra.json"
+  },
+  {
+    "hero": "maki",
+    "gear": "blindfold",
+    "direction": "west",
+    "supplemental": false,
+    "png": "atlases/maki-blindfold-west.png",
+    "metadata": "atlases/maki-blindfold-west.json"
+  },
+  {
+    "hero": "maki",
+    "gear": "blindfold",
+    "direction": "west",
+    "supplemental": true,
+    "png": "atlases/maki-blindfold-west-extra.png",
+    "metadata": "atlases/maki-blindfold-west-extra.json"
+  },
+  {
+    "enemy": "fly",
+    "png": "atlases/enemy-fly.png",
+    "metadata": "atlases/enemy-fly.json"
+  },
+  {
+    "enemy": "lurker",
+    "png": "atlases/enemy-lurker.png",
+    "metadata": "atlases/enemy-lurker.json"
+  },
+  {
+    "enemy": "finger",
+    "png": "atlases/enemy-finger.png",
+    "metadata": "atlases/enemy-finger.json"
+  },
+  {
+    "enemy": "jogo",
+    "png": "atlases/enemy-jogo.png",
+    "metadata": "atlases/enemy-jogo.json"
+  },
+  {
+    "enemy": "hanami",
+    "png": "atlases/enemy-hanami.png",
+    "metadata": "atlases/enemy-hanami.json"
+  },
+  {
+    "enemy": "mahito",
+    "png": "atlases/enemy-mahito.png",
+    "metadata": "atlases/enemy-mahito.json"
+  },
+  {
+    "enemy": "sukuna",
+    "png": "atlases/enemy-sukuna.png",
+    "metadata": "atlases/enemy-sukuna.json"
+  }
+]
