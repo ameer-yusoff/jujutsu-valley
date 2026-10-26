@@ -1,0 +1,320 @@
+{
+  "version": 1,
+  "style": "pixel",
+  "cell": 32,
+  "columns": 8,
+  "entries": [
+    {
+      "hero": "gojo",
+      "slot": 0,
+      "id": "vortex",
+      "name": "Lapse · Blue",
+      "rect": {
+        "x": 0,
+        "y": 0,
+        "w": 32,
+        "h": 32
+      }
+    },
+    {
+      "hero": "gojo",
+      "slot": 1,
+      "id": "repulsion",
+      "name": "Reversal · Red",
+      "rect": {
+        "x": 32,
+        "y": 0,
+        "w": 32,
+        "h": 32
+      }
+    },
+    {
+      "hero": "gojo",
+      "slot": 2,
+      "id": "purple",
+      "name": "Hollow Purple",
+      "rect": {
+        "x": 64,
+        "y": 0,
+        "w": 32,
+        "h": 32
+      }
+    },
+    {
+      "hero": "gojo",
+      "slot": 3,
+      "id": "eyes",
+      "name": "Six Eyes",
+      "rect": {
+        "x": 96,
+        "y": 0,
+        "w": 32,
+        "h": 32
+      }
+    },
+    {
+      "hero": "yuji",
+      "slot": 0,
+      "id": "fist",
+      "name": "Divergent Fist",
+      "rect": {
+        "x": 128,
+        "y": 0,
+        "w": 32,
+        "h": 32
+      }
+    },
+    {
+      "hero": "yuji",
+      "slot": 1,
+      "id": "rush",
+      "name": "Lunging Strike",
+      "rect": {
+        "x": 160,
+        "y": 0,
+        "w": 32,
+        "h": 32
+      }
+    },
+    {
+      "hero": "yuji",
+      "slot": 2,
+      "id": "flash",
+      "name": "Black Flash Barrage",
+      "rect": {
+        "x": 192,
+        "y": 0,
+        "w": 32,
+        "h": 32
+      }
+    },
+    {
+      "hero": "yuji",
+      "slot": 3,
+      "id": "resolve",
+      "name": "Fighting spirit",
+      "rect": {
+        "x": 224,
+        "y": 0,
+        "w": 32,
+        "h": 32
+      }
+    },
+    {
+      "hero": "megumi",
+      "slot": 0,
+      "id": "dog",
+      "name": "Divine Dog",
+      "rect": {
+        "x": 0,
+        "y": 32,
+        "w": 32,
+        "h": 32
+      }
+    },
+    {
+      "hero": "megumi",
+      "slot": 1,
+      "id": "nue",
+      "name": "Nue",
+      "rect": {
+        "x": 32,
+        "y": 32,
+        "w": 32,
+        "h": 32
+      }
+    },
+    {
+      "hero": "megumi",
+      "slot": 2,
+      "id": "garden",
+      "name": "Chimera Shadow Garden",
+      "rect": {
+        "x": 64,
+        "y": 32,
+        "w": 32,
+        "h": 32
+      }
+    },
+    {
+      "hero": "megumi",
+      "slot": 3,
+      "id": "shadow",
+      "name": "Shadow step",
+      "rect": {
+        "x": 96,
+        "y": 32,
+        "w": 32,
+        "h": 32
+      }
+    },
+    {
+      "hero": "nobara",
+      "slot": 0,
+      "id": "nails",
+      "name": "Nail Volley",
+      "rect": {
+        "x": 128,
+        "y": 32,
+        "w": 32,
+        "h": 32
+      }
+    },
+    {
+      "hero": "nobara",
+      "slot": 1,
+      "id": "hairpin",
+      "name": "Hairpin",
+      "rect": {
+        "x": 160,
+        "y": 32,
+        "w": 32,
+        "h": 32
+      }
+    },
+    {
+      "hero": "nobara",
+      "slot": 2,
+      "id": "doll",
+      "name": "Resonance",
+      "rect": {
+        "x": 192,
+        "y": 32,
+        "w": 32,
+        "h": 32
+      }
+    },
+    {
+      "hero": "nobara",
+      "slot": 3,
+      "id": "doll",
+      "name": "Straw doll",
+      "rect": {
+        "x": 224,
+        "y": 32,
+        "w": 32,
+        "h": 32
+      }
+    },
+    {
+      "hero": "yuta",
+      "slot": 0,
+      "id": "katana",
+      "name": "Rika Strike",
+      "rect": {
+        "x": 0,
+        "y": 64,
+        "w": 32,
+        "h": 32
+      }
+    },
+    {
+      "hero": "yuta",
+      "slot": 1,
+      "id": "speech",
+      "name": "Cursed Speech",
+      "rect": {
+        "x": 32,
+        "y": 64,
+        "w": 32,
+        "h": 32
+      }
+    },
+    {
+      "hero": "yuta",
+      "slot": 2,
+      "id": "rika",
+      "name": "Rika Manifestation",
+      "rect": {
+        "x": 64,
+        "y": 64,
+        "w": 32,
+        "h": 32
+      }
+    },
+    {
+      "hero": "yuta",
+      "slot": 3,
+      "id": "heal",
+      "name": "Reverse technique",
+      "rect": {
+        "x": 96,
+        "y": 64,
+        "w": 32,
+        "h": 32
+      }
+    },
+    {
+      "hero": "maki",
+      "slot": 0,
+      "id": "glaive",
+      "name": "Sweeping Strike",
+      "rect": {
+        "x": 128,
+        "y": 64,
+        "w": 32,
+        "h": 32
+      }
+    },
+    {
+      "hero": "maki",
+      "slot": 1,
+      "id": "slam",
+      "name": "Vaulting Slam",
+      "rect": {
+        "x": 160,
+        "y": 64,
+        "w": 32,
+        "h": 32
+      }
+    },
+    {
+      "hero": "maki",
+      "slot": 2,
+      "id": "arsenal",
+      "name": "Weapon Barrage",
+      "rect": {
+        "x": 192,
+        "y": 64,
+        "w": 32,
+        "h": 32
+      }
+    },
+    {
+      "hero": "maki",
+      "slot": 3,
+      "id": "focus",
+      "name": "Weapon focus",
+      "rect": {
+        "x": 224,
+        "y": 64,
+        "w": 32,
+        "h": 32
+      }
+    },
+    {
+      "hero": "gojo",
+      "slot": "interact",
+      "id": "interact",
+      "name": "Interact / melee",
+      "rect": {
+        "x": 0,
+        "y": 96,
+        "w": 32,
+        "h": 32
+      }
+    },
+    {
+      "hero": "gojo",
+      "slot": "dash",
+      "id": "dash",
+      "name": "Dash",
+      "rect": {
+        "x": 32,
+        "y": 96,
+        "w": 32,
+        "h": 32
+      }
+    }
+  ]
+}

@@ -1,5 +1,5 @@
 {
-  "version": 1,
+  "version": 3,
   "reference": "gojo-reference.jpg",
   "writtenBible": "sprite-bible.md",
   "heroes": [
@@ -13291,5 +13291,385 @@
         }
       ]
     }
-  ]
+  ],
+  "style": "poster-chibi-pixel",
+  "nativeGrid": 128,
+  "texelScale": 1,
+  "quests": [
+    {
+      "id": "first_light",
+      "chapter": 1,
+      "title": "A place beyond the Curtain",
+      "description": "Attune a checkpoint at Jujutsu High. Every sorcerer needs a place to return to.",
+      "objectives": [
+        {
+          "kind": "checkpoint",
+          "region": "school",
+          "target": 1,
+          "label": "Attune a school checkpoint"
+        }
+      ],
+      "rewards": {
+        "wood": 3,
+        "crystal": 2
+      },
+      "requires": []
+    },
+    {
+      "id": "forest_supplies",
+      "chapter": 1,
+      "title": "Supplies for the sanctuary",
+      "description": "Harvest three resources in Whispering Shrine. Wood and cursed crystals will keep the lanterns burning.",
+      "objectives": [
+        {
+          "kind": "harvest",
+          "region": "forest",
+          "target": 3,
+          "label": "Harvest forest resources"
+        }
+      ],
+      "rewards": {
+        "wood": 4,
+        "crystal": 3,
+        "gem": 2
+      },
+      "unlocks": [
+        "tokyo"
+      ],
+      "requires": [
+        "first_light"
+      ]
+    },
+    {
+      "id": "lantern_watch",
+      "chapter": 1,
+      "title": "A light against the dark",
+      "description": "Upgrade a shrine lantern. Its purification aura restores your squad and slows approaching curses.",
+      "objectives": [
+        {
+          "kind": "lantern",
+          "target": 1,
+          "label": "Upgrade a purification lantern"
+        }
+      ],
+      "rewards": {
+        "gem": 3,
+        "herb": 2
+      },
+      "requires": [
+        "forest_supplies"
+      ]
+    },
+    {
+      "id": "womb_hunt",
+      "chapter": 1,
+      "title": "The cursed womb",
+      "description": "A Finger Bearer is gathering cursed energy in the forest. Challenge it with your squad.",
+      "region": "forest",
+      "boss": "finger",
+      "objectives": [
+        {
+          "kind": "boss",
+          "boss": "finger",
+          "region": "forest",
+          "target": 1,
+          "label": "Exorcise the Finger Bearer"
+        }
+      ],
+      "rewards": {
+        "gem": 6,
+        "herb": 2
+      },
+      "levelReward": 1,
+      "requires": [
+        "lantern_watch"
+      ]
+    },
+    {
+      "id": "tokyo_patrol",
+      "chapter": 2,
+      "title": "Trouble in the backstreets",
+      "description": "Clear three curses in Tokyo and attune a city checkpoint to secure your route.",
+      "objectives": [
+        {
+          "kind": "kills",
+          "region": "tokyo",
+          "target": 3,
+          "label": "Exorcise Tokyo curses"
+        },
+        {
+          "kind": "checkpoint",
+          "region": "tokyo",
+          "target": 1,
+          "label": "Attune a Tokyo checkpoint"
+        }
+      ],
+      "rewards": {
+        "gem": 5,
+        "crystal": 3
+      },
+      "requires": [
+        "womb_hunt"
+      ]
+    },
+    {
+      "id": "volcano_hunt",
+      "chapter": 2,
+      "title": "Embers in the city",
+      "description": "Jogo has turned the backstreets into his hunting ground. Dodge the eruption warnings and extinguish the curse.",
+      "region": "tokyo",
+      "boss": "jogo",
+      "objectives": [
+        {
+          "kind": "boss",
+          "boss": "jogo",
+          "region": "tokyo",
+          "target": 1,
+          "label": "Defeat Jogo"
+        }
+      ],
+      "rewards": {
+        "gem": 8,
+        "herb": 3
+      },
+      "unlocks": [
+        "shibuya"
+      ],
+      "levelReward": 1,
+      "requires": [
+        "tokyo_patrol"
+      ]
+    },
+    {
+      "id": "shibuya_seals",
+      "chapter": 3,
+      "title": "Beneath the Shibuya Curtain",
+      "description": "Attune both Shibuya checkpoints before confronting the disaster curses.",
+      "objectives": [
+        {
+          "kind": "checkpoint",
+          "region": "shibuya",
+          "target": 2,
+          "label": "Attune Shibuya checkpoints"
+        }
+      ],
+      "rewards": {
+        "gem": 6,
+        "crystal": 4
+      },
+      "requires": [
+        "volcano_hunt"
+      ]
+    },
+    {
+      "id": "roots_hunt",
+      "chapter": 3,
+      "title": "Roots of the disaster",
+      "description": "Hanami waits in Shibuya. Keep moving when the roots mark the ground beneath your squad.",
+      "region": "shibuya",
+      "boss": "hanami",
+      "objectives": [
+        {
+          "kind": "boss",
+          "boss": "hanami",
+          "region": "shibuya",
+          "target": 1,
+          "label": "Defeat Hanami"
+        }
+      ],
+      "rewards": {
+        "gem": 10,
+        "herb": 3
+      },
+      "requires": [
+        "shibuya_seals"
+      ]
+    },
+    {
+      "id": "soul_hunt",
+      "chapter": 3,
+      "title": "The shape of a soul",
+      "description": "Mahito stalks the underground approaches. Read his lunges and fight together.",
+      "region": "shibuya",
+      "boss": "mahito",
+      "objectives": [
+        {
+          "kind": "boss",
+          "boss": "mahito",
+          "region": "shibuya",
+          "target": 1,
+          "label": "Defeat Mahito"
+        }
+      ],
+      "rewards": {
+        "gem": 12,
+        "herb": 3
+      },
+      "unlocks": [
+        "domain"
+      ],
+      "levelReward": 1,
+      "requires": [
+        "roots_hunt"
+      ]
+    },
+    {
+      "id": "king_hunt",
+      "chapter": 4,
+      "title": "The King of Curses",
+      "description": "Enter the cursed domain and face Ryomen Sukuna. Save your ultimate for the opening after his slash.",
+      "region": "domain",
+      "boss": "sukuna",
+      "objectives": [
+        {
+          "kind": "boss",
+          "boss": "sukuna",
+          "region": "domain",
+          "target": 1,
+          "label": "Defeat Ryomen Sukuna"
+        }
+      ],
+      "rewards": {
+        "gem": 20,
+        "herb": 5
+      },
+      "levelReward": 2,
+      "requires": [
+        "soul_hunt"
+      ]
+    }
+  ],
+  "designs": {
+    "gojo": {
+      "hair": "#f1f0fa",
+      "shade": "#b9b8d8",
+      "eyes": "#5ee1f0",
+      "coat": "#343148",
+      "trim": "#615979",
+      "trait": "White swept spikes, black blindfold, cyan Six Eyes, high plum collar"
+    },
+    "yuji": {
+      "hair": "#e79b9b",
+      "shade": "#aa626e",
+      "eyes": "#9b7255",
+      "coat": "#28344d",
+      "trim": "#c33e52",
+      "trait": "Short pink spikes, dark undercut, red hood, red shoes"
+    },
+    "megumi": {
+      "hair": "#182b3b",
+      "shade": "#101c2c",
+      "eyes": "#609c92",
+      "coat": "#25394c",
+      "trim": "#4b647a",
+      "trait": "Black starburst hair, sea-green eyes, navy high-collar uniform"
+    },
+    "nobara": {
+      "hair": "#b87842",
+      "shade": "#795034",
+      "eyes": "#af7a45",
+      "coat": "#293b52",
+      "trim": "#d7ad69",
+      "trait": "Orange side-parted bob, brass buttons, navy skirt, hammer and nails"
+    },
+    "yuta": {
+      "hair": "#26333e",
+      "shade": "#131e2d",
+      "eyes": "#687487",
+      "coat": "#eee9de",
+      "trim": "#b1b5bf",
+      "trait": "Tousled black side fringe, white jacket, katana, diagonal sword strap"
+    },
+    "maki": {
+      "hair": "#285749",
+      "shade": "#173c36",
+      "eyes": "#b2a86c",
+      "coat": "#293a4f",
+      "trim": "#69768e",
+      "trait": "Dark green high ponytail, rectangular glasses, navy uniform, polearm"
+    },
+    "jogo": {
+      "trait": "Single eye, volcano head, yellow spotted shawl, cane"
+    },
+    "hanami": {
+      "trait": "Pale bark skin, root eyes, branch horns, red left shoulder"
+    },
+    "mahito": {
+      "trait": "Long blue-grey hair, face stitches, patchwork dark clothing"
+    },
+    "sukuna": {
+      "trait": "Pink hair, black facial and body markings, white robe and dark sash"
+    },
+    "finger": {
+      "trait": "Pale cursed womb, broad grin, long arms, golden finger core"
+    },
+    "fly": {
+      "trait": "Winged cyclopean cursed spirit"
+    },
+    "lurker": {
+      "trait": "Original multi-eyed shadow curse"
+    },
+    "panda": {
+      "trait": "Black-and-white panda companion"
+    },
+    "dog": {
+      "trait": "White Divine Dog with forehead seal"
+    }
+  },
+  "catalogueSources": [
+    "https://jujutsukaisen.jp/character/index_1st.php",
+    "https://jujutsukaisen.jp/character/category4.php",
+    "https://jujutsukaisen-movie.jp/character/"
+  ],
+  "combat": {
+    "heroDamage": "baseDamage * (1 + 0.08 * (level - 1))",
+    "encounterLevel": "Survival: highest active hero level; bosses +1. Sandbox: level 1.",
+    "enemyHp": "baseHP * (1 + (boss ? 0.16 : 0.12) * (encounterLevel - 1))",
+    "enemyDamage": "baseDamage * (1 + (boss ? 0.09 : 0.07) * (encounterLevel - 1))",
+    "enemyEnergy": {
+      "fly": {
+        "max": 40,
+        "regen": 4,
+        "cost": 14
+      },
+      "lurker": {
+        "max": 90,
+        "regen": 6,
+        "cost": 24
+      },
+      "finger": {
+        "max": 180,
+        "regen": 9,
+        "cost": 36
+      },
+      "jogo": {
+        "max": 220,
+        "regen": 10,
+        "cost": 48
+      },
+      "hanami": {
+        "max": 240,
+        "regen": 10,
+        "cost": 52
+      },
+      "mahito": {
+        "max": 200,
+        "regen": 12,
+        "cost": 42
+      },
+      "sukuna": {
+        "max": 300,
+        "regen": 14,
+        "cost": 70
+      }
+    },
+    "xpToNext": "80 + level * 40"
+  },
+  "characterArt": "art/characters/manifest.json",
+  "modelSheets": [
+    "art/model-sheets/heroes.webp",
+    "art/model-sheets/curses-companions.webp",
+    "art/model-sheets/gojo-headgear.webp"
+  ],
+  "skillAtlas": "skill-atlas.json"
 }

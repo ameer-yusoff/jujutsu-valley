@@ -1,86 +1,83 @@
-# Chibi World: Implemented Sprite and Interaction Bible
+# Jujutsu Valley · Poster-Style Sprite Bible v3
 
-The supplied Gojo illustration establishes the lavender-white hair, cyan eyes, bold dark outline, high plum collar, rounded face, and mitten hands. Character art is procedural vector artwork inspired by that illustration. North/side views are authored interpretations of the front reference.
+## Art standard
 
-## Atlas and coordinate contract
+The battle poster is the visual reference for the current roster. Version 3 replaces the earlier low-resolution block figures with detailed chibi artwork: expressive eyes, layered hair, substantial two-head-tall bodies, textured uniforms, recognizable weapons, and clean transparent silhouettes. The world and HUD remain pixelated; characters use detailed 128-pixel cells.
 
-Each cell is 128 × 128 pixels. The master sheet has 8 columns and 18 rows: 1024 × 2304 pixels. Six supplemental rows form a 1024 × 768 sheet. Cell coordinates are `(column × 128, localRow × 128)`. The foot anchor is `(64,116)`; 96 pose pixels correspond to one world unit. Character display scaling is applied uniformly by the renderer.
+Forty-six normalized model views are indexed in `art/characters/manifest.json`: front, back, profile and combat stances for six heroes; six additional Gojo headgear views; front/attack views for the main curses; and Rika, Panda, Divine Dog and Nue. Original model sheets are downloadable in `art/model-sheets/`. The poster is `art/battle-poster.webp`.
 
-Directions: south/front, north/back, side/east, and west/mirrored. Eight-way movement selects these cardinal artwork views while retaining the full continuous movement and attack vectors. Gojo has blindfold, sunglasses, and unveiled-eye variants. Other heroes use their individual faces and accessories.
+The official visual guides consulted were the [TV anime character catalogue](https://jujutsukaisen.jp/character/index_1st.php), [disaster curse catalogue](https://jujutsukaisen.jp/character/category4.php), and [Jujutsu Kaisen 0 catalogue](https://jujutsukaisen-movie.jp/character/). The game uses original generated interpretations rather than extracted anime frames. The current playable catalogue is Gojo, Yuji, Megumi, Nobara, Yuta and Maki.
 
-Metadata records atlas rectangles, timing, root translation, head/body rotations, both arm and leg angles, scale, hand anchors, projectile origin, foot anchors, hurtbox, event flags, and hitbox range/arc. `pose.js` evaluates these values for the 2D character sprite drawer and atlas inspector. The world is a flat pixel-art tile map inspired by cozy farming and social games. All exploration characters are 2D. Short ultimate and awakening cut-ins use layered 2.5D parallax; there are no 3D world or character modes. World collision uses the continuous facing vector.
+| Character | Distinctive design |
+|---|---|
+|Gojo|Lavender-white textured spikes, plum high collar, black blindfold, round shades, luminous cyan Six Eyes|
+|Yuji|Short pink spikes, dark undercut, red hood, navy uniform and red trainers|
+|Megumi|Black starburst hair, green eyes, navy high collar and shadow techniques|
+|Nobara|Auburn side-parted bob, amber eyes, brass uniform buttons, skirt, stockings and hammer|
+|Yuta|Tousled black hair, white jacket, dark trousers and katana strap|
+|Maki|Green high ponytail, rectangular glasses, navy uniform and long polearm|
+|Jogo / Hanami|Volcanic single eye and spotted shawl / bark skin, branch eyes and red botanical shoulder|
+|Mahito / Sukuna|Long blue-grey hair and facial stitches / pink hair, dark markings and white robe|
 
-## Gojo master animation matrix
+## Atlas and animation contract
 
-| Row | Clip | Frames | FPS | Duration | Active frames (1-based) |
-|---|---|---:|---:|---:|---|
-|1|Idle south|6|8|0.750 s|—|
-|2|Idle north|4|6|0.667 s|—|
-|3|Idle side|6|8|0.750 s|—|
-|4|Walk south|8|12|0.667 s|—|
-|5|Walk north|8|12|0.667 s|—|
-|6|Walk side|8|12|0.667 s|—|
-|7|Run/dash|6|16|0.375 s|—|
-|8|Sit and mochi|6|6|1.000 s|—|
-|9|Boop/wave|6|10|0.600 s|—|
-|10|Chop|6|12|0.500 s|4|
-|11|Mine|6|12|0.500 s|4|
-|12|Water/forage|6|10|0.600 s|4|
-|13|Unseal / hero special|8|14|0.571 s|—|
-|14|Three-hit melee|8|16|0.500 s|2, 5, 7|
-|15|Technique 1|6|12|0.500 s|4|
-|16|Technique 2|6|12|0.500 s|4|
-|17|Ultimate|8|12|0.667 s|6|
-|18|Infinity/guard|4|10|0.400 s|—|
+Each cell is 128 × 128, with foot anchor `(64,116)`. Source views fit a 114 × 108 bounding area. The master atlas is 8 columns × 18 rows, 1024 × 2304. Six supplemental rows use 1024 × 768. North and east have their own source artwork; west mirrors the profile. Signature combat stances face the camera for readability while gameplay collision follows the continuous world-facing vector.
 
-Supplemental clips: hurt 4@12, defeat 6@8, recovery 6@10, checkpoint 6@10, teleport 8@12, headgear transition 6@12.
+There are 64 hero sheets including directions, Gojo variants and supplemental clips, plus seven enemy sheets: 71 sheets and 5,256 exported animation frames. `atlases/manifest.json` indexes the PNGs and matching metadata. Every sheet now declares `style: poster-chibi-pixel`, `version: 3`, and `nativeGrid: 128`.
 
-## Evaluated motion
+| Row | Animation | Frames | FPS | Active frames, 1-based |
+|---|---|---:|---:|---|
+|1–3|Idle south / north / side|6 / 4 / 6|8 / 6 / 8|—|
+|4–6|Walk south / north / side|8|12|—|
+|7|Dash|6|16|—|
+|8|Sit and snack|6|6|—|
+|9|Wave / boop|6|10|—|
+|10|Chop|6|12|4|
+|11|Mine|6|12|4|
+|12|Water / forage|6|10|4|
+|13|Unseal / special|8|14|—|
+|14|Three-hit melee|8|16|2, 5, 7|
+|15|Technique 1|6|12|4|
+|16|Technique 2|6|12|4|
+|17|Ultimate|8|12|6|
+|18|Guard / Infinity|4|10|—|
 
-For frame f of N, normalized phase is `p = f/N`, angle `a = 2πp`, frame duration `1/FPS`, and clip duration `N/FPS`.
+Supplemental clips: hurt 4@12, defeat 6@8, recovery 6@10, checkpoint 6@10, teleport 8@12, headgear transition 6@12. Enemies expose idle, walk, telegraph, attack, hurt, defeat and recovery.
 
-- Breathing: root y `1.5 sin(a)`; hair `2 sin(a − π/4)`.
-- Walking: root y `−3 abs(sin(πf/4))`; opposing arm swings ±28°, legs ±22°, head tilt ±2°.
-- Dash: torso tilt 14°, arms −55°, movement speed 11 u/s for 0.2 s; 0.4 s invulnerability, 0.8 s cooldown.
-- Sit: root drops 10 px, legs fold ±50°, snack hand `(70,61)`. After 3 s sitting, add 5 HP/s and 8 CE/s to base regeneration.
-- Wave/boop: head 8°, right arm `−125° + 20°sin(2a)`, root x `6 sin(πp)`, hand `(88,62)`.
-- Chop/mine: tool rotates −65° to +95°. Impact at frame 4, root shifts +4 px; chop scales `(1.12,0.88)`, mine `(1.12,0.86)`. Mine hop is `−6sin(πp)` px.
-- Water: can tilt 35°, hand `(84,78)`, later-phase knee bend +8 px. Three watering interactions grow the crop by 34% each, clamped at 100%; a fourth interaction harvests.
-- Unseal: hand `(66,45)`, arm lifts through `−130°sin(πp)`; unveiled face starts at frame 4.
-- Casting: Blue left-hand origin `(92,72)`, Red right-hand `(94,66)`, Purple hands `(34,72)` and `(94,72)`. Runtime effects originate relative to the actor and continuous facing vector.
-- Hurt/defeat/recovery: −12° recoil with −5px sinusoidal shift; defeat leans to 80° and lowers 10px; recovery reverses an 8px root drop.
+The detailed model artwork is composited into procedural animation, rather than claiming thousands of independently illustrated drawings. Walks articulate the lower legs and bob the body; dashes lean, attacks use authored combat stances, damage recoils, sitting compresses the silhouette, and defeat falls within the cell. Tools, resource effects and cast timing share the simulation pose contract. Integer placement and nearest-neighbor sampling preserve the artwork; exported alpha is binary to avoid background halos.
 
-## Gameplay events and physics
+Frame duration is `1/FPS`; clip duration is `frames/FPS`; atlas position is `(column×128,row×128)`. Pose metadata includes root offset, rotations, hand/tool/projectile anchors, hurtbox, active hitbox and impact event. Runtime simulation uses 60 Hz. Melee hits occur at 0.0625, 0.25 and 0.375 seconds; standard casts release at 0.25 seconds and ultimates at 5/12 seconds.
 
-The simulation runs at 60 Hz. Gathering grants loot once per impact. Loot visuals launch upward, use gravity 24 u/s² and bounce restitution 0.45, then magnetize toward the controlled character. Resource nodes regrow after 30 seconds.
+## Skill icons and cinematics
 
-Melee hits occur at 0.0625, 0.25 and 0.375 seconds. Base hit damage is 25. The third hit has a 15% Black Flash chance, 40% during Six Eyes; Black Flash damage is `25^1.35`, restores 30 CE and grants 20 gauge. Other successful melee hits grant 8 gauge and 8 CE.
+`skill-atlas.png` and `skill-atlas.json` contain 26 original pixel icons: four commands per hero and two utilities. Gojo has Blue, Red, Purple and Six Eyes; Yuji has fists, lunge and Black Flash; Megumi has Divine Dog, Nue and shadows; Nobara has nails, Hairpin and a straw doll; Yuta has katana, speech, Rika and healing; Maki has polearm, slam and arsenal designs.
 
-Blue spawns 3.5 units forward, lasts 2.5 seconds, pulls within 4.5 units with acceleration based on `18/max(0.5,d)^1.2`, and applies ten ticks of 9.6 base damage. Red travels 14 u/s to 6 units and detonates in radius 2.8 for 140 base damage and 1.2s stun. Purple tests a 16-unit forward cylinder of radius 2.2, deals 450 base damage, and harvests trees/crystals in its path.
+Ultimate cutscenes layer the same detailed hero, enemy and summon artwork over pixel scenery. Charging precedes the simulation release event, followed by a hero-specific beam, barrage, shadow field, nail resonance, Rika strike or weapon sweep. Movement, particles and foreground layers create 2.5D depth without a 3D world. Reduced-motion preferences remove the strongest motion and flash.
 
-Infinity scales approaching enemy/projectile speed by `clamp(((d−0.65)/0.95)^3,0,1)`. It drains 15 CE/s, reduced to 3 with Six Eyes, plus 2 CE/s on stopped enemy contact. Six Eyes scales Gojo costs ×0.2, damage ×1.5 and cooldown ×0.5. Survival activation spends a full gauge for 15 seconds, with a 30-second activation-to-activation lockout. Sandbox ignores the gauge requirement. Cosmetic toggles do not grant the buff.
+## Combat and progression
 
-## Character technique mapping
+Hero HP is `500+25×level`, CE (mana) is `300+20×level`, and damage is `baseDamage×(1+0.08×(level−1))`. XP to the next level is `80+40×level`. The active squad shares kill experience. Basic attacks, dashes, immunity frames, CE costs, regeneration, cooldowns, stuns, roots, Infinity and awakening are functional simulation mechanics.
 
-| Hero | Slot 1 | Slot 2 | Ultimate |
-|---|---|---|---|
-|Gojo|Blue gravity field|Red projectile|Purple beam|
-|Yuji|Divergent Fist close strike|Forward lunging strike|Black Flash area barrage|
-|Megumi|Divine Dog assist strike|Nue area strike|Chimera Shadow Garden stun field|
-|Nobara|Three spread nails|Hairpin area detonation|Resonance area burst|
-|Yuta|Rika assist strike|Cursed Speech stun|Rika manifestation burst|
-|Maki|Wide sweeping strike|Vaulting area slam|Weapon barrage|
+Survival encounter level is the highest active hero level, plus one for bosses. Stats are fixed when an enemy spawns. Normal HP scales by 12% per level and boss HP by 16%; damage scales by 7% and 9% respectively. Sandbox retains base enemy stats. A normal curse does not become a boss merely because its scaled HP exceeds 500.
 
-Other heroes use the same pose categories with character-specific effects and weapons. Base technique costs are 45/65/140 CE, cooldowns 4/6/12s, and damage 96/140/450, divided across multiple projectiles when applicable. Non-Gojo specials grant temporary speed/energy focus; Yuta's special heals the party.
+| Curse | Base HP | Base damage | Base CE | CE / second | Technique cost |
+|---|---:|---:|---:|---:|---:|
+|Fly Head|60|8|40|4|14|
+|Shadow Lurker|150|18|90|6|24|
+|Finger Bearer|650|35|180|9|36|
+|Jogo|800|35|220|10|48|
+|Hanami|900|32|240|10|52|
+|Mahito|850|30|200|12|42|
+|Sukuna|1100|40|300|14|70|
 
-## Curses and companions
+Enemy CE capacity gains 8 per encounter level, regeneration gains 0.25 and technique cost gains 2. A technique reserves its CE once at telegraph startup. With insufficient CE, the enemy closes to melee and uses a weaker zero-cost basic attack while regenerating. Bosses enter phase two at half HP: 15% more speed, 10% more damage, a one-time 25% CE refill and a shorter attack cooldown. HP and CE bars are visible above all enemies; the boss HUD also shows numeric values, level and phase.
 
-Fly Head: 60 HP, 3.8 speed, 8 damage. Shadow Lurker: 150 HP, 3.0 speed, 18 damage. Finger Bearer: 650 HP, 2.4 speed, 35 damage, slam/spread orbs. Jogo: 800 HP, fire eruptions. Hanami: 900 HP, rooting hazards. Mahito: 850 HP, lunges. Sukuna: 1100 HP, slash lane.
+Gojo retains the original Blue/Red/Purple costs and base damage. Blue ticks ten times for 96 total base damage; Red deals 140 and stuns; Purple deals 450 along its forward corridor and harvests resources. Six Eyes modifies cost ×0.2, damage ×1.5 and cooldown ×0.5 for Gojo's techniques.
 
-Every enemy has idle, movement, telegraph, attack, hurt, defeat, and recovery categories in the studio. Telegraphs last 0.6 seconds. Fire/root hazards add a further 0.7-second location warning before impact. Companions follow the controlled hero, avoid nearby telegraphs, and autonomously use melee and their first two techniques. Ultimates are player-commanded by switching control.
+## Survival campaign and travel
 
-## Regions and travel
+The journal tracks ten prerequisite-linked quests with one-time rewards. Five named hunts target Finger Bearer, Jogo, Hanami, Mahito and Sukuna. Objectives cover attuning checkpoints, gathering, lantern upgrades, regional exorcisms and boss kills. Claiming campaign rewards unlocks Tokyo, Shibuya and the domain. Existing saves gain the journal without losing their prior unlocks.
 
-Jujutsu High, Whispering Shrine, Tokyo Backstreets, Shibuya, and the Cursed Domain contain nine named checkpoints. Their IDs and exact coordinates are in `data.js` and the studio's complete bible export. Travel requires an attuned destination, an unlocked region, no boss seal, and eight seconds since hostile damage. Rest heals and sets the defeat return point; teleport preserves health, energy and cooldowns.
+The single map control is the minimap; keyboard M also opens it. Red points show living curses in the current loaded region, with a larger outlined marker for bosses. The region preview uses actual terrain and entity positions. Unloaded regions do not invent enemy locations.
 
-Sandbox opens all destinations. Survival opens Tokyo after three harvests, Shibuya after three Tokyo exorcisms, and the domain after both Shibuya checkpoints are attuned. A 180-second cycle covers 24 in-game hours. Night is 18:00–06:00. Midnight bosses rotate; dawn purifies remaining enemies and levels the active party.
+Teleportation uses shared region collision footprints, separate safe squad positions and immediate camera alignment. Combat blocks teleport for eight seconds after hostile damage; boss encounters seal travel until resolved. Sandbox and Survival retain separate browser-local saves and are chosen on the battle-poster title screen.
