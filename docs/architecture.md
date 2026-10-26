@@ -11,3 +11,11 @@ The final art direction is a Stardew Valley / Pony Town inspired 2D background, 
 Sandbox and Survival have independent browser-local saves. GitHub contains source and prebaked assets; the private playable Site is published separately.
 
 The HUD uses dark indigo surfaces and cyan cursed-energy accents. On mobile, compact squad cards and a collapsed objective preserve the central play area. The minimap draws from the current terrain rather than a generic layout. Browser icons and a home-screen manifest share the Six Eyes emblem.
+
+## Poster-style roster, quests and combat
+
+The version 3 roster is loaded by `character-art.js` from 46 normalized poster-derived model views. `sprites.js` composites them into the original atlas contract and the studio exports. Model sheets and the poster are included in `dist/art/`; source assets are cached before the title screen starts. The previous 32-pixel block roster is replaced.
+
+`quests.js` owns campaign prerequisites, objective counters and one-time reward claims. `combat.js` owns damage growth, encounter scaling, XP thresholds and the seven enemy CE profiles. Enemies reserve energy at attack startup and fall back to basic melee when insufficient. `map-markers.js` shares red enemy markers between the minimap and region preview. `skill-icons.js` supplies per-character pixel commands, and `cinematics.js` synchronizes their layered cutscenes with ultimate release events.
+
+The title screen pauses simulation and offers separate saved Sandbox/Survival adventures. A four-step guide is shown once. Pixelify Sans is served locally with its OFL license. Browser tests cover the title screen, quest claims, a named hunt, enemy CE, red markers, changing ultimate frames, save reload and mobile viewports.

@@ -1,0 +1,2 @@
+import test from 'node:test';import assert from 'node:assert/strict';import {enemyMarkers} from '../dist/map-markers.js';
+test('living curses and bosses use red markers only in their current region',()=>{const s={region:'tokyo',enemies:[{id:'fly',x:2,z:3,hp:50,isBoss:false},{id:'jogo',x:5,z:-1,hp:600,isBoss:true},{id:'lurker',x:0,z:0,hp:0,isBoss:false}]};const markers=enemyMarkers(s);assert.equal(markers.length,2);assert.ok(markers.every(m=>m.color==='#ff343e'));assert.equal(markers[1].boss,true);assert.deepEqual(enemyMarkers(s,'school'),[]);});

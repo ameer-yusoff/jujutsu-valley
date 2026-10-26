@@ -13,3 +13,5 @@ Controls: WASD/arrows move, Shift dash, E/Space interact/melee, 1/2/3 abilities,
 Save data remains in browser localStorage. The Settings menu exports a portable JSON backup. Sandbox and Survival have independent saves. Browser emulation validates touch layouts; physical-device performance remains device-dependent.
 
 The HUD uses an indigo/cyan Jujutsu theme and displays whole in-game hours. Mobile Character Actions includes Infinity and headgear controls. Teleport arrivals and save recovery share collision rules with the map. See [CHANGELOG.md](CHANGELOG.md) for the latest fixes.
+
+The title screen now offers separate Sandbox and Survival adventures. Survival has ten tracked quests, five named boss hunts, shared squad XP, level-scaled damage, and enemy HP/CE systems. The current roster uses 46 detailed model views matching the battle poster; all 71 animated sheets are rebuilt in sprite-bible version 3.
