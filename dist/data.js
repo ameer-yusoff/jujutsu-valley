@@ -26,7 +26,7 @@ export const ENEMIES = [
 {id:'sukuna',name:'Ryomen Sukuna',hp:1100,speed:3,damage:40,color:'#dd948b',type:'slash'}
 ];
 export const COSTS=[45,65,140], COOLDOWNS=[4,6,12];
-export const DEFAULT_PARTY=['gojo','yuji','megumi'];
+export const DEFAULT_PARTY=['gojo'];
 export const dist=(a,b)=>Math.hypot(a.x-b.x,a.z-b.z);
 export const clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
 export function stats(level=1){return {maxHp:500+25*level,maxCe:300+20*level};}
