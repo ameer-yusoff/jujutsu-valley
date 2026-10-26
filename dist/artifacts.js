@@ -1,5 +1,5 @@
-import {REGIONS} from './data.js?v=clean-sprites-3';
-import {findSafePosition} from './navigation.js?v=clean-sprites-3';
+import {REGIONS} from './data.js?v=body-scale-4';
+import {findSafePosition} from './navigation.js?v=body-scale-4';
 const names=['Sealed talisman','Cursed relic','Domain fragment'];
 export const ARTIFACTS=REGIONS.flatMap(r=>names.map((name,i)=>({id:`${r.id}-artifact-${i}`,region:r.id,name,...findSafePosition(r.id,[{x:-7,z:10},{x:6,z:-4},{x:1,z:10}][i]),gems:2+i,xp:40+i*20})));
 export function collected(s,id){return (s.artifacts||[]).includes(id);}

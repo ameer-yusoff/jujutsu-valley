@@ -1,10 +1,10 @@
-import * as T from './vendor/three.module.js?v=clean-sprites-3';
-import {World,label,mat} from './world.js?v=clean-sprites-3';
-import {Engine,createState,restoreState,serializable} from './engine.js?v=clean-sprites-3';
-import {HEROES,REGIONS,dist} from './data.js?v=clean-sprites-3';
-import {UI,$} from './ui.js?v=clean-sprites-3';
-import {drawHero,companionCanvas,loadCharacterArt} from './sprites.js?v=clean-sprites-3';
-import {Cinematics} from './cinematics.js?v=clean-sprites-3';
+import * as T from './vendor/three.module.js?v=body-scale-4';
+import {World,label,mat} from './world.js?v=body-scale-4';
+import {Engine,createState,restoreState,serializable} from './engine.js?v=body-scale-4';
+import {HEROES,REGIONS,dist} from './data.js?v=body-scale-4';
+import {UI,$} from './ui.js?v=body-scale-4';
+import {drawHero,companionCanvas,loadCharacterArt} from './sprites.js?v=body-scale-4';
+import {Cinematics} from './cinematics.js?v=body-scale-4';
 const bootStarted=performance.now();
 let world,engine,ui;
 const keys=new Set(),stick={x:0,z:0};let soundOn=false,cinematics=true,audio=null,visibilityPaused=document.hidden,saveElapsed=0;
@@ -16,9 +16,9 @@ function readSave(mode){try{return restoreState(JSON.parse(localStorage.getItem(
 function save(){try{localStorage.setItem(`chibi-world-v1-${engine.s.mode}`,JSON.stringify(serializable(engine.s)));localStorage.setItem('chibi-world-mode',engine.s.mode);}catch{ui?.toast('Browser storage is unavailable. Export your save in Settings.',true);}}
 function sound(note=440){if(!soundOn)return;try{audio||=new AudioContext();audio.resume();const osc=audio.createOscillator(),gain=audio.createGain();osc.type='sine';osc.frequency.setValueAtTime(note,audio.currentTime);gain.gain.setValueAtTime(.025,audio.currentTime);gain.gain.exponentialRampToValueAtTime(.001,audio.currentTime+.3);osc.connect(gain);gain.connect(audio.destination);osc.start();osc.stop(audio.currentTime+.31);}catch{}}
 const heroVisuals=new Map(),loot=[],summons=[],pets=[];
-function animatePet(p,t,kind){const frame=Math.floor(t*10)%8,key=kind+frame;if(key===p.lastFrame)return;p.lastFrame=key;const canvas=p.m.material.map.image,ctx=canvas.getContext('2d');ctx.clearRect(0,0,128,128);ctx.drawImage(companionCanvas(p.id,frame,kind),0,0);p.m.material.map.needsUpdate=true;}
-function petCanvas(id){return companionCanvas(id);}
-function petSprite(id,x,z,scale=1.3){const tex=new T.CanvasTexture(petCanvas(id));tex.colorSpace=T.SRGBColorSpace;const m=new T.Sprite(new T.SpriteMaterial({map:tex,transparent:true,depthWrite:false}));m.center.set(.5,.1);m.scale.setScalar(scale);m.position.set(x,.25,z);world.actors.add(m);return m;}
+function animatePet(p,t,kind){const frame=Math.floor(t*10)%8,key=kind+frame;if(key===p.lastFrame)return;p.lastFrame=key;const canvas=p.m.material.map.image,ctx=canvas.getContext('2d');ctx.clearRect(0,0,canvas.width,canvas.height);ctx.drawImage(companionCanvas(p.id,frame,kind,512),0,0);p.m.material.map.needsUpdate=true;}
+function petCanvas(id){return companionCanvas(id,0,'idle',512);}
+function petSprite(id,x,z,scale=1.3){const tex=new T.CanvasTexture(petCanvas(id));tex.colorSpace=T.SRGBColorSpace;const m=new T.Sprite(new T.SpriteMaterial({map:tex,transparent:true,depthWrite:false}));m.center.set(.5,.1);m.scale.setScalar(scale*512/192);m.position.set(x,.25,z);world.actors.add(m);return m;}
 function rebuildRegion(){clearInput();cinema?.stop();world.build(engine.s.region,engine.s);for(const p of pets){world.actors.remove(p.m);p.m.material.map.dispose();p.m.material.dispose();}pets.length=0;if(engine.s.region==='forest'){for(const p of [{id:'panda',x:-4,z:7},{id:'dog',x:2,z:5}])pets.push({...p,m:petSprite(p.id,p.x,p.z),hop:0});}for(const l of loot)world.fx.remove(l.m);loot.length=0;for(const summon of summons){world.actors.remove(summon.m);summon.m.material.map.dispose();summon.m.material.dispose();}summons.length=0;}
 
 const cinema=new Cinematics();
