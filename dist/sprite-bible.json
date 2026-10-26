@@ -13705,6 +13705,13 @@
     "source": "art/drawn-sources/",
     "heroFramesPerClip": 8,
     "leftWalk": "mirrored right",
-    "gojoHeadgear": "blindfold artwork shared across new poses"
+    "gojoHeadgear": "blindfold artwork shared across new poses",
+    "runtimeCell": 192,
+    "worldPixelRatioCap": 2,
+    "idleFacing": "south",
+    "sideWalkPassingColumns": [
+      2,
+      6
+    ]
   }
 }

@@ -53,3 +53,10 @@
 - Replaced procedural limb deformation with source-cell playback for movement, combat, casting and interactions.
 - Added dedicated side walks, distance-driven walk playback, eight-frame hero clips and an interactive frame inspector.
 - Retained original generated sheets and normalized transparent cells, including corrected Maki artwork.
+
+## Side walking, front idle and sharper graphics
+- Replaced side-walk artwork with visible passing steps for all six heroes.
+- Restore a front-facing idle when movement stops.
+- Build 192px detail variants directly from source drawings and render the world at device pixel density.
+- Correct pointer projection for the sharper canvas and retain the same world scale.
+- Add regression checks for walk frame progression, foot silhouettes, idle direction and detail resolution.
