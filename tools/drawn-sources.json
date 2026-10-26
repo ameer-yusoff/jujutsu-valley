@@ -65,5 +65,39 @@
       "path": "dist/art/drawn-sources/companions.webp"
     }
   ],
-  "side": "dist/art/drawn-sources/side-walks.webp"
+  "side": "dist/art/drawn-sources/side-walks.webp",
+  "sidePatches": {
+    "path": "dist/art/drawn-sources/side-walks-isolated.webp",
+    "ids": [
+      "nobara",
+      "yuta",
+      "maki"
+    ]
+  },
+  "repairs": {
+    "path": "dist/art/drawn-sources/frame-repairs.webp",
+    "targets": [
+      [
+        "yuta-motion.webp",
+        5,
+        5
+      ],
+      [
+        "yuji-actions.webp",
+        2,
+        2
+      ],
+      [
+        "yuji-actions.webp",
+        3,
+        2
+      ],
+      [
+        "enemies-a.webp",
+        4,
+        3
+      ]
+    ]
+  },
+  "defeatRepair": "dist/art/drawn-sources/yuji-defeat-isolated.webp"
 }
