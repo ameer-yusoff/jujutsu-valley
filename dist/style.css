@@ -24,3 +24,5 @@
 @media(max-height:520px) and (pointer:coarse){#ultimate-cinema{top:23%;width:70vw}#boss-bar{top:57px}#boss-vitals{font-size:10px!important}}
 .boss-fight .quest-card{display:none}@media(max-width:700px){#boss-bar{top:calc(242px + var(--safe-top))}}@media(max-height:520px) and (pointer:coarse){#boss-bar{top:57px}}
 .quest-boss-portrait{width:100px;height:100px;object-fit:contain;float:right;margin:0 0 5px 15px;image-rendering:pixelated}.quest-entry:after{content:'';display:block;clear:both}@media(max-width:700px){.quest-boss-portrait{width:80px;height:80px;margin-left:9px}}
+
+@media(min-width:701px) and (min-height:521px){.boss-fight #toasts{top:auto;bottom:135px}}
