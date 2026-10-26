@@ -1,10 +1,10 @@
-import {animationFrame} from './animation-timing.js?v=crisp-walk-2';
-import {ARTIFACTS,collected} from './artifacts.js?v=crisp-walk-2';
-import {motion} from './animation-profiles.js?v=crisp-walk-2';
-import {regionBuildings,regionPonds,regionColliders} from './navigation.js?v=crisp-walk-2';
-import * as T from './vendor/three.module.js?v=crisp-walk-2';
-import {REGIONS,HEROES,CLIPS} from './data.js?v=crisp-walk-2';
-import {drawHero,drawEnemyAnimation} from './sprites.js?v=crisp-walk-2';
+import {animationFrame} from './animation-timing.js?v=clean-sprites-3';
+import {ARTIFACTS,collected} from './artifacts.js?v=clean-sprites-3';
+import {motion} from './animation-profiles.js?v=clean-sprites-3';
+import {regionBuildings,regionPonds,regionColliders} from './navigation.js?v=clean-sprites-3';
+import * as T from './vendor/three.module.js?v=clean-sprites-3';
+import {REGIONS,HEROES,CLIPS} from './data.js?v=clean-sprites-3';
+import {drawHero,drawEnemyAnimation} from './sprites.js?v=clean-sprites-3';
 const mats=new Map();export function mat(color){if(!mats.has(color))mats.set(color,new T.MeshToonMaterial({color}));return mats.get(color);}
 export function label(text,color='#fff5d6'){const c=document.createElement('canvas');c.width=384;c.height=72;const x=c.getContext('2d');x.font='26px sans-serif';x.textAlign='center';x.fillStyle='#314c39dd';x.beginPath();x.roundRect(2,2,380,64,18);x.fill();x.fillStyle=color;x.fillText(text,192,45);const s=new T.Sprite(new T.SpriteMaterial({map:new T.CanvasTexture(c),transparent:true}));s.scale.set(3,.55,1);return s;}
 function canvas(w,h){const c=document.createElement('canvas');c.width=w;c.height=h;return c;}

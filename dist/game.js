@@ -1,10 +1,10 @@
-import * as T from './vendor/three.module.js?v=crisp-walk-2';
-import {World,label,mat} from './world.js?v=crisp-walk-2';
-import {Engine,createState,restoreState,serializable} from './engine.js?v=crisp-walk-2';
-import {HEROES,REGIONS,dist} from './data.js?v=crisp-walk-2';
-import {UI,$} from './ui.js?v=crisp-walk-2';
-import {drawHero,companionCanvas,loadCharacterArt} from './sprites.js?v=crisp-walk-2';
-import {Cinematics} from './cinematics.js?v=crisp-walk-2';
+import * as T from './vendor/three.module.js?v=clean-sprites-3';
+import {World,label,mat} from './world.js?v=clean-sprites-3';
+import {Engine,createState,restoreState,serializable} from './engine.js?v=clean-sprites-3';
+import {HEROES,REGIONS,dist} from './data.js?v=clean-sprites-3';
+import {UI,$} from './ui.js?v=clean-sprites-3';
+import {drawHero,companionCanvas,loadCharacterArt} from './sprites.js?v=clean-sprites-3';
+import {Cinematics} from './cinematics.js?v=clean-sprites-3';
 const bootStarted=performance.now();
 let world,engine,ui;
 const keys=new Set(),stick={x:0,z:0};let soundOn=false,cinematics=true,audio=null,visibilityPaused=document.hidden,saveElapsed=0;

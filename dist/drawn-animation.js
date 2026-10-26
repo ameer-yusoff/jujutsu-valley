@@ -1,4 +1,4 @@
-import {characterImage} from './character-art.js?v=crisp-walk-2';
+import {characterImage} from './character-art.js?v=clean-sprites-3';
 export function drawnFrame(id,kind,phase,direction='south'){
  const motion=characterImage(id+'-motion'),actions=characterImage(id+'-actions');
  if(!motion)return null;const side=characterImage(id+'-sidewalk');

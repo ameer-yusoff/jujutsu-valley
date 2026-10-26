@@ -1,9 +1,9 @@
-import {technique,radialVectors,upgradeSkill} from './progression.js?v=crisp-walk-2';
-import {ARTIFACTS,collected} from './artifacts.js?v=crisp-walk-2';
-import {heroDamage,enemyCombatStats,xpToNext,energyRegen,reserveEnemyAttack} from './combat.js?v=crisp-walk-2';
-import {ensureQuests,recordQuestEvent,claimQuest,activeQuest,questAvailable,questReady,QUESTS} from './quests.js?v=crisp-walk-2';
-import {partyArrival,repairPartyPositions} from './navigation.js?v=crisp-walk-2';
-import {HEROES,REGIONS,ENEMIES,CLIPS,CHECKPOINTS,DEFAULT_PARTY,dist,clamp,stats,abilityStats,infinityFactor,travelAllowed} from './data.js?v=crisp-walk-2';
+import {technique,radialVectors,upgradeSkill} from './progression.js?v=clean-sprites-3';
+import {ARTIFACTS,collected} from './artifacts.js?v=clean-sprites-3';
+import {heroDamage,enemyCombatStats,xpToNext,energyRegen,reserveEnemyAttack} from './combat.js?v=clean-sprites-3';
+import {ensureQuests,recordQuestEvent,claimQuest,activeQuest,questAvailable,questReady,QUESTS} from './quests.js?v=clean-sprites-3';
+import {partyArrival,repairPartyPositions} from './navigation.js?v=clean-sprites-3';
+import {HEROES,REGIONS,ENEMIES,CLIPS,CHECKPOINTS,DEFAULT_PARTY,dist,clamp,stats,abilityStats,infinityFactor,travelAllowed} from './data.js?v=clean-sprites-3';
 export function createState(mode='sandbox'){
  const sandbox=mode==='sandbox';const state={version:1,mode,region:'school',party:[...DEFAULT_PARTY],controlled:'gojo',heroes:Object.fromEntries(HEROES.map((h,i)=>[h.id,{id:h.id,...stats(),hp:525,ce:320,level:1,xp:0,x:i===0?0:i===1?-1:1,z:i===0?0:1,facing:{x:0,z:1},moving:false,gear:'blindfold',awake:0,gauge:0,infinity:false,cooldowns:[0,0,0],dashCd:0,specialCd:0,animTime:0,animElapsed:0,clip:0,sitting:false,iframes:0,attackCd:0,down:false,dashTime:0,pending:[]}])) ,recruited:sandbox?HEROES.map(h=>h.id):['gojo','yuji','megumi'],discovered:sandbox?CHECKPOINTS.map(c=>c.id):[],unlocked:sandbox?REGIONS.map(r=>r.id):['school','forest'],lastRest:'school-0',inventory:{wood:0,crystal:0,herb:0,gem:0},objects:REGIONS.flatMap((r,i)=>Array.from({length:9},(_,j)=>({id:`${r.id}-resource-${j}`,region:r.id,type:['tree','crystal','crop','tree','crystal','crop','lantern','crystal','tree'][j],x:[-6,5,-7,10,-10,4,3,-5,11][j],z:[5,4,0,-3,-4,7,5,-9,6][j],hits:0,depleted:false,regrow:0,growth:0,upgrade:0}))),clock:8,day:1,freeze:false,combatTimer:0,bossActive:false,bossSpawnedDay:-1,bossIndex:0,kills:0,harvests:0,regionKills:{},enemies:[],projectiles:[],hostiles:[],hazards:[],zones:[],elapsed:0,spawnTimer:0,restores:0};ensureQuests(state);return state;
 }

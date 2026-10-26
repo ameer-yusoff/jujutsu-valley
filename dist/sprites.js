@@ -1,11 +1,11 @@
-import {drawnFrame,paintDrawn} from './drawn-animation.js?v=crisp-walk-2';
-import {actionPose,articulated,signature,ACTION_STYLES} from './character-actions.js?v=crisp-walk-2';
-import {motion} from './animation-profiles.js?v=crisp-walk-2';
-import {HEROES,CLIPS} from './data.js?v=crisp-walk-2';
-import {evaluatePose,frameMetadata} from './pose.js?v=crisp-walk-2';
-import {DESIGNS,CATALOGUE_SOURCES} from './catalogue.js?v=crisp-walk-2';
-import {ENERGY_PROFILES} from './combat.js?v=crisp-walk-2';
-import {characterImage,characterManifest,loadCharacterArt} from './character-art.js?v=crisp-walk-2';
+import {drawnFrame,paintDrawn} from './drawn-animation.js?v=clean-sprites-3';
+import {actionPose,articulated,signature,ACTION_STYLES} from './character-actions.js?v=clean-sprites-3';
+import {motion} from './animation-profiles.js?v=clean-sprites-3';
+import {HEROES,CLIPS} from './data.js?v=clean-sprites-3';
+import {evaluatePose,frameMetadata} from './pose.js?v=clean-sprites-3';
+import {DESIGNS,CATALOGUE_SOURCES} from './catalogue.js?v=clean-sprites-3';
+import {ENERGY_PROFILES} from './combat.js?v=clean-sprites-3';
+import {characterImage,characterManifest,loadCharacterArt} from './character-art.js?v=clean-sprites-3';
 export {loadCharacterArt};
 function canvas(w=128,h=128){const c=document.createElement('canvas');c.width=w;c.height=h;return c;}
 const rasterCache=new Map();

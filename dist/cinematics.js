@@ -1,5 +1,5 @@
-import {animationFrame} from './animation-timing.js?v=crisp-walk-2';
-import {HEROES,CLIPS} from './data.js?v=crisp-walk-2';import {drawHero,drawEnemyAnimation,companionCanvas} from './sprites.js?v=crisp-walk-2';
+import {animationFrame} from './animation-timing.js?v=clean-sprites-3';
+import {HEROES,CLIPS} from './data.js?v=clean-sprites-3';import {drawHero,drawEnemyAnimation,companionCanvas} from './sprites.js?v=clean-sprites-3';
 const C={gojo:'#b686fa',yuji:'#ef526d',megumi:'#91c8ba',nobara:'#eea582',yuta:'#b7a2e8',maki:'#b4d69f'};
 export class Cinematics{
  constructor(){this.active=null;this.enabled=true;this.reduced=matchMedia('(prefers-reduced-motion:reduce)').matches;}
