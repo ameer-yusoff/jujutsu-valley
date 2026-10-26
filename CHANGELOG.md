@@ -17,3 +17,11 @@
 - Added enemy HP/CE systems, resource costs and fallback attacks, shared XP, level-based hero damage, Survival encounter scaling and second-phase bosses.
 - Removed the duplicate map control. Red markers now show curses and bosses on the minimap and detailed region map.
 - Added 26 individual pixel skill icons, pixel interface typography and hero-specific layered ultimate cinematics.
+
+## Minimal title and fullscreen play
+
+- Moved the battle poster to a short animated loading sequence with artwork-loading progress.
+- Simplified the title screen to the game mark and two saved-mode choices.
+- Removed the full-width game header; kept compact region, hour and settings controls.
+- Reduced persistent tools to Quests and Actions; Studio and Rest remain available inside Actions.
+- Verified desktop, both portrait phone sizes and mobile landscape with animated-loading and no-header checks.

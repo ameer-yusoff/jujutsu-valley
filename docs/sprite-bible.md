@@ -80,4 +80,4 @@ The journal tracks ten prerequisite-linked quests with one-time rewards. Five na
 
 The single map control is the minimap; keyboard M also opens it. Red points show living curses in the current loaded region, with a larger outlined marker for bosses. The region preview uses actual terrain and entity positions. Unloaded regions do not invent enemy locations.
 
-Teleportation uses shared region collision footprints, separate safe squad positions and immediate camera alignment. Combat blocks teleport for eight seconds after hostile damage; boss encounters seal travel until resolved. Sandbox and Survival retain separate browser-local saves and are chosen on the battle-poster title screen.
+Teleportation uses shared region collision footprints, separate safe squad positions and immediate camera alignment. Combat blocks teleport for eight seconds after hostile damage; boss encounters seal travel until resolved. Sandbox and Survival retain separate browser-local saves and are chosen on a minimal pixel title menu after an animated poster loading sequence.
