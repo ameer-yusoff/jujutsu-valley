@@ -1,5 +1,5 @@
 {
-  "version": 3,
+  "version": 4,
   "reference": "gojo-reference.jpg",
   "writtenBible": "sprite-bible.md",
   "heroes": [
@@ -13706,12 +13706,20 @@
     "heroFramesPerClip": 8,
     "leftWalk": "mirrored right",
     "gojoHeadgear": "blindfold artwork shared across new poses",
-    "runtimeCell": 192,
+    "runtimeCell": null,
     "worldPixelRatioCap": 2,
     "idleFacing": "south",
     "sideWalkPassingColumns": [
       2,
       6
-    ]
+    ],
+    "runtimeViewport": 512,
+    "packedFrames": true,
+    "neutralBodyPixels": 156,
+    "bodyScale": "fixed per sequence; never fitted per frame",
+    "heroCollisionRadius": 0.45,
+    "scaleAudit": "art/characters/body-scale-audit.json",
+    "makiIdle": "armed polearm, eight frames",
+    "handAnchors": "unannotated"
   }
 }

@@ -66,3 +66,11 @@
 - Restore Gojo's boots and remove neighboring feet above Yuta.
 - Add isolated side-walk sources and replace additional crowded or malformed action poses found during review.
 - Rebuild standard/detail sheets and sprite exports with source provenance and regression checks.
+
+## Stable sprite bodies and Maki’s weapon
+
+- Added armed Maki idle frames and mapped her techniques to polearm poses.
+- Replaced silhouette fitting with fixed body calibration per animation sequence across all 17 drawn actors. Wide weapons no longer shrink the character.
+- Packed detail artwork into a larger safety viewport, preserving world presentation and full defeat frames. Rebuilt all 71 compatibility exports.
+- Centralized the fixed hero ground collision radius and removed misleading inferred hand markers from Studio metadata.
+- Added frame-bound, scale, weapon-presence and real collision regression checks; versioned assets to bypass older cached sheets.

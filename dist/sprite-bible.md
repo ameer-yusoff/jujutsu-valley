@@ -123,3 +123,13 @@ The previous normalizer inferred row cuts from the first column and silently fel
 A separate, spacious three-row source replaces Nobara/Yuta/Maki side walks. Replacement drawings repair four crowded tool/curse cells and Yuji's duplicated defeat head. Maki's combat/cast sequences reuse her clean isolated action rows, and Nobara's watering sequence excludes seated poses accidentally present in its source row. Two unavailable enemy source poses use explicit clean neighboring pose holds; these are recorded, not silently treated as new drawings.
 
 `art/characters/extraction-audit.json` records source bounds, replacement sources and safe pose holds. Regression checks cover Gojo's original full foot bounds, all 48 hero side-walk bodies, and boot-colored contamination above Yuta's head. Standard/detail sheets and all 71 exports are rebuilt from the repaired extraction.
+
+## Stable body scale and armed Maki
+
+Body calibration now measures a neutral hair-to-foot pose for each sequence and applies one fixed scale to every frame in that sequence. Neutral bodies use 156 source pixels; weapon tips and cast effects never trigger per-frame shrinking. Source replacement poses are calibrated before assembly. Bent knees and crouches retain their natural pose height.
+
+Runtime sheets use trimmed, packed frames in a 512px safety viewport with a fixed ground root at (256,464), equivalent to (64,116) in the logical preview. The larger viewport allows wide swings without reducing the body. World and cinematic presentation compensate uniformly for the extra transparent space. Standard 128px exports remain compatibility sheets. This supersedes the earlier uniform 192px-cell layout.
+
+Maki has eight armed idle drawings. Her three techniques use the armed polearm sequence; tool interactions temporarily use the relevant tool. Hero contact uses a fixed 0.45-world-unit ground circle, independent of artwork, animation and level. This body collision is separate from each technique’s intentional attack range. Hand attachment coordinates are unannotated, rather than inferred from the old articulated rig.
+
+`art/characters/body-scale-audit.json` records all 896 source frames, sequence scales and viewport bounds. Automated checks cover unclipped bounds, invariant sequence scales, all hero clip collision metadata, real projectile contacts and 40 armed Maki idle/technique frames. These checks establish measurable invariants; they do not certify subjective artistic perfection.
