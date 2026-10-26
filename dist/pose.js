@@ -1,5 +1,5 @@
-import {frameDurations} from './animation-timing.js?v=drawn-poses-1';
-import {CLIPS,clamp} from './data.js?v=drawn-poses-1';
+import {frameDurations} from './animation-timing.js?v=crisp-walk-2';
+import {CLIPS,clamp} from './data.js?v=crisp-walk-2';
 export function evaluatePose(clip,frame=0,direction='south',gear='blindfold'){
  const c=typeof clip==='number'?CLIPS[clip]:CLIPS.find(x=>x.id===clip)||CLIPS[0];
  const p=(frame%c.frames)/c.frames, a=p*Math.PI*2, k=c.kind;

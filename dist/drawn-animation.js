@@ -1,4 +1,4 @@
-import {characterImage} from './character-art.js?v=drawn-poses-1';
+import {characterImage} from './character-art.js?v=crisp-walk-2';
 export function drawnFrame(id,kind,phase,direction='south'){
  const motion=characterImage(id+'-motion'),actions=characterImage(id+'-actions');
  if(!motion)return null;const side=characterImage(id+'-sidewalk');
@@ -11,4 +11,4 @@ export function drawnFrame(id,kind,phase,direction='south'){
  }else{row=['attack','telegraph','hurt','defeat','recovery'].includes(kind)?1:0;if(kind==='telegraph')column=Math.min(1,Math.floor(phase*2));if(kind==='attack')column=2+Math.min(3,Math.floor(phase*4));if(kind==='hurt')column=6;if(kind==='defeat')column=7;}
  return {sheet,row,column,mirror:direction==='west'};
 }
-export function paintDrawn(ctx,frame){ctx.save();ctx.imageSmoothingEnabled=false;if(frame.mirror){ctx.translate(128,0);ctx.scale(-1,1);}ctx.drawImage(frame.sheet,frame.column*128,frame.row*128,128,128,0,0,128,128);ctx.restore();}
+export function paintDrawn(ctx,frame){const cell=frame.sheet.width/8;ctx.save();ctx.imageSmoothingEnabled=false;if(frame.mirror){ctx.translate(128,0);ctx.scale(-1,1);}ctx.drawImage(frame.sheet,frame.column*cell,frame.row*cell,cell,cell,0,0,128,128);ctx.restore();}
