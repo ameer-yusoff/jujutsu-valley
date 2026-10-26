@@ -180,12 +180,12 @@
       "checkpoints": [
         [
           "Shopping Street",
-          -9,
-          7
+          -6,
+          6
         ],
         [
           "Station Entrance",
-          9,
+          6,
           -7
         ]
       ],
@@ -212,12 +212,12 @@
       "checkpoints": [
         [
           "Crossing",
-          -9,
-          7
+          -6,
+          6
         ],
         [
           "Underground Platform",
-          9,
+          6,
           -8
         ]
       ],
@@ -291,28 +291,28 @@
       "id": "tokyo-0",
       "region": "tokyo",
       "name": "Shopping Street",
-      "x": -9,
-      "z": 7
+      "x": -6,
+      "z": 6
     },
     {
       "id": "tokyo-1",
       "region": "tokyo",
       "name": "Station Entrance",
-      "x": 9,
+      "x": 6,
       "z": -7
     },
     {
       "id": "shibuya-0",
       "region": "shibuya",
       "name": "Crossing",
-      "x": -9,
-      "z": 7
+      "x": -6,
+      "z": 6
     },
     {
       "id": "shibuya-1",
       "region": "shibuya",
       "name": "Underground Platform",
-      "x": 9,
+      "x": 6,
       "z": -8
     },
     {

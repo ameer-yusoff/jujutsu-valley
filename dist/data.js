@@ -12,8 +12,8 @@ export const CLIPS = [
 export const REGIONS = [
 {id:'school',name:'Tokyo Jujutsu High',subtitle:'A little peace, before the curtain.',color:'#d6dfb4',sky:'#e9e5cf',checkpoints:[['School Gate',-11,8],['Training Courtyard',5,-5]],exits:[['forest',15,8],['tokyo',-15,-9]],objective:'Meet your classmates in the courtyard'},
 {id:'forest',name:'Whispering Shrine',subtitle:'Where the forest keeps its secrets.',color:'#b5cf9d',sky:'#dce8cd',checkpoints:[['Meadow Shrine',-8,6],['Forest Torii',9,-9]],exits:[['school',-15,8],['tokyo',15,-9]],objective:'Gather wood and crystals for a lantern'},
-{id:'tokyo',name:'Tokyo Backstreets',subtitle:'Something stirs behind the everyday.',color:'#c6c9bc',sky:'#e7ded2',checkpoints:[['Shopping Street',-9,7],['Station Entrance',9,-7]],exits:[['school',-15,8],['shibuya',15,-8]],objective:'Clear the streets and reach the station'},
-{id:'shibuya',name:'Shibuya · The Curtain',subtitle:'Stay together. The city feels different.',color:'#727c88',sky:'#b8b6c5',checkpoints:[['Crossing',-9,7],['Underground Platform',9,-8]],exits:[['tokyo',-15,9],['domain',15,-9]],objective:'Find the talisman beneath the crossing'},
+{id:'tokyo',name:'Tokyo Backstreets',subtitle:'Something stirs behind the everyday.',color:'#c6c9bc',sky:'#e7ded2',checkpoints:[['Shopping Street',-6,6],['Station Entrance',6,-7]],exits:[['school',-15,8],['shibuya',15,-8]],objective:'Clear the streets and reach the station'},
+{id:'shibuya',name:'Shibuya · The Curtain',subtitle:'Stay together. The city feels different.',color:'#727c88',sky:'#b8b6c5',checkpoints:[['Crossing',-6,6],['Underground Platform',6,-8]],exits:[['tokyo',-15,9],['domain',15,-9]],objective:'Find the talisman beneath the crossing'},
 {id:'domain',name:'Beyond the Veil',subtitle:'An impossible place. An inevitable fight.',color:'#6c527f',sky:'#3c304f',checkpoints:[['Domain Threshold',0,9]],exits:[['shibuya',-15,9]],objective:'Exorcise the curse within the domain'}
 ];
 export const ENEMIES = [
