@@ -1,7 +1,7 @@
 // Authored action curves. Each channel animates independently around fixed joints.
 export const ACTION_STYLES={gojo:'weightless / finger cast',yuji:'boxer / alternating punches',megumi:'reserved / shadow hand signs',nobara:'confident / hammer snap',yuta:'guarded / sword draw',maki:'athletic / polearm sweep',fly:'wing flutter / dive',lurker:'crawl / claw',finger:'heavy / overhead slam',jogo:'shuffle / volcanic eruption',hanami:'rooted / branch thrust',mahito:'elastic / morphing lunge',sukuna:'measured / crossing slashes',panda:'heavy / paw strike',dog:'trot / pounce',nue:'wing beat / lightning dive',rika:'hover / claw reach'};
 const pulse=(p,start,end)=>p<start||p>end?0:Math.sin((p-start)/(end-start)*Math.PI);
-export function actionPose(id,kind,p){const w=Math.sin(p*Math.PI*2),hit=pulse(p,.2,.75),recover=pulse(p,.55,1),a={x:0,y:0,head:0,body:0,left:0,right:0,leg:0,lean:0};
+function primaryPose(id,kind,p){const w=Math.sin(p*Math.PI*2),hit=pulse(p,.2,.75),recover=pulse(p,.55,1),a={x:0,y:0,head:0,body:0,left:0,right:0,leg:0,lean:0};
  if(kind==='walk'){const g={gojo:[1,1,8],yuji:[3,3,24],megumi:[1,1,12],nobara:[3,2,18],yuta:[1,2,10],maki:[2,2,28]}[id]||[2,2,18];a.head=w*g[0];a.body=-w*g[0]*.5;a.left=w*g[2];a.right=-a.left;a.leg=w*.16;a.y=-Math.abs(w)*g[1];return a;}
  if(['idle','guard'].includes(kind)){a.head=w*(id==='gojo'?2:1);a.left=w*2;a.right=-w*2;return a;}
  if(['wave','water','chop','mine','checkpoint','teleport','sit','unseal'].includes(kind)){const i=['gojo','yuji','megumi','nobara','yuta','maki'].indexOf(id);a.head=(i-2)*hit*2;a.body=hit*(i%2?4:-3);a.right=kind==='wave'?-70-w*16:kind==='water'?24+hit*12:kind==='sit'?-30*hit:-45*hit;a.left=kind==='chop'||kind==='mine'?-35*hit:(i%2?12:-12)*hit;a.y=hit*(i===2?4:i===5?-3:1);return a;}
@@ -24,3 +24,8 @@ export function signature(ctx,id,kind,p){if(!['melee','blue','red','purple','tel
  if(id==='finger'||id==='panda'){for(let i=0;i<7;i++)square(32+i*9,108-Math.sin(i)*q*8,3,'#e3c897');}
  if(id==='fly'||id==='nue'){arc(id==='nue'?'#c6b1ff':'#b7dce2',32);}
  if(id==='dog'||id==='lurker'||id==='rika'){for(let i=0;i<3;i++)for(let j=0;j<5;j++)square(83+i*6+j*2,63+j*6,2,'#e4dee9');}ctx.restore();}
+
+export function actionPose(id,kind,p){const a=primaryPose(id,kind,p),index=Object.keys(ACTION_STYLES).indexOf(id),phase=p*Math.PI*2;
+// Secondary motion trails the main gesture instead of retracing its sine curve.
+a.head+=Math.cos(phase+.35)*1.8;a.body+=Math.sin(phase+.8)*1.2;a.left+=Math.cos(phase+.6)*2;a.right+=Math.sin(phase+1.1)*2;
+if(['blue','red','purple','melee'].includes(kind)){const anticipation=p<.25?Math.sin(p/.25*Math.PI):0;a.body-=anticipation*(3+index%3);a.x-=anticipation*2;}return a;}
