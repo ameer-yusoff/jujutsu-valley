@@ -1,0 +1,3 @@
+import test from 'node:test';import assert from 'node:assert/strict';import {CLIPS} from '../dist/data.js';import {animationFrame,frameDurations} from '../dist/animation-timing.js';
+test('all clips retain duration and valid frames with variable timing',()=>{for(const c of CLIPS){const d=frameDurations(c);assert.ok(d.every(v=>v>0));assert.ok(Math.abs(d.reduce((a,b)=>a+b,0)-c.frames/c.fps)<1e-8);assert.ok(animationFrame(c,20)<c.frames);if(!c.loop)assert.equal(animationFrame(c,20),c.frames-1);}});
+test('harvest and cast contact timing stays aligned to gameplay',()=>{for(const [row,time]of [[9,.25],[10,.25],[11,.3],[14,.25],[15,.25],[16,5/12]]){const c=CLIPS[row],d=frameDurations(c);assert.ok(Math.abs(d.slice(0,c.active[0]).reduce((a,b)=>a+b,0)-time)<1e-8);}});

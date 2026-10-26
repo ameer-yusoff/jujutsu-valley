@@ -1,3 +1,4 @@
+import {frameDurations} from './animation-timing.js';
 import {CLIPS,clamp} from './data.js';
 export function evaluatePose(clip,frame=0,direction='south',gear='blindfold'){
  const c=typeof clip==='number'?CLIPS[clip]:CLIPS.find(x=>x.id===clip)||CLIPS[0];
@@ -19,4 +20,4 @@ export function evaluatePose(clip,frame=0,direction='south',gear='blindfold'){
  if(gear==='eyes')pose.hair+=Math.sin(a*3)*2-2;
  return pose;
 }
-export function frameMetadata(clip,frame,direction,gear){const c=CLIPS[clip],p=evaluatePose(clip,frame,direction,gear);return {clip:c.id,frame,rect:{x:frame*128,y:(clip%18)*128,w:128,h:128},duration:1/c.fps,groundAnchor:{x:64,y:116},pose:p,attachments:{leftHand:p.handL,rightHand:p.handR,face:{x:64,y:46},leftFoot:{x:54,y:115},rightFoot:{x:76,y:115},projectile:p.handR},hurtbox:{x:43,y:29,w:42,h:87},hitbox:p.active?{range:c.kind==='melee'?1.2:c.kind==='purple'?16:1.2,arc:75}:null,event:p.active?(['chop','mine','water'].includes(c.kind)?'harvest':'impact'):null};}
+export function frameMetadata(clip,frame,direction,gear){const c=CLIPS[clip],p=evaluatePose(clip,frame,direction,gear);return {clip:c.id,frame,rect:{x:frame*128,y:(clip%18)*128,w:128,h:128},duration:frameDurations(c)[frame],groundAnchor:{x:64,y:116},pose:p,attachments:{leftHand:p.handL,rightHand:p.handR,face:{x:64,y:46},leftFoot:{x:54,y:115},rightFoot:{x:76,y:115},projectile:p.handR},hurtbox:{x:43,y:29,w:42,h:87},hitbox:p.active?{range:c.kind==='melee'?1.2:c.kind==='purple'?16:1.2,arc:75}:null,event:p.active?(['chop','mine','water'].includes(c.kind)?'harvest':'impact'):null};}
