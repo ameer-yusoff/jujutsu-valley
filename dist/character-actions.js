@@ -1,0 +1,26 @@
+// Authored action curves. Each channel animates independently around fixed joints.
+export const ACTION_STYLES={gojo:'weightless / finger cast',yuji:'boxer / alternating punches',megumi:'reserved / shadow hand signs',nobara:'confident / hammer snap',yuta:'guarded / sword draw',maki:'athletic / polearm sweep',fly:'wing flutter / dive',lurker:'crawl / claw',finger:'heavy / overhead slam',jogo:'shuffle / volcanic eruption',hanami:'rooted / branch thrust',mahito:'elastic / morphing lunge',sukuna:'measured / crossing slashes',panda:'heavy / paw strike',dog:'trot / pounce',nue:'wing beat / lightning dive',rika:'hover / claw reach'};
+const pulse=(p,start,end)=>p<start||p>end?0:Math.sin((p-start)/(end-start)*Math.PI);
+export function actionPose(id,kind,p){const w=Math.sin(p*Math.PI*2),hit=pulse(p,.2,.75),recover=pulse(p,.55,1),a={x:0,y:0,head:0,body:0,left:0,right:0,leg:0,lean:0};
+ if(kind==='walk'){const g={gojo:[1,1,8],yuji:[3,3,24],megumi:[1,1,12],nobara:[3,2,18],yuta:[1,2,10],maki:[2,2,28]}[id]||[2,2,18];a.head=w*g[0];a.body=-w*g[0]*.5;a.left=w*g[2];a.right=-a.left;a.leg=w*.16;a.y=-Math.abs(w)*g[1];return a;}
+ if(['idle','guard'].includes(kind)){a.head=w*(id==='gojo'?2:1);a.left=w*2;a.right=-w*2;return a;}
+ if(['wave','water','chop','mine','checkpoint','teleport','sit','unseal'].includes(kind)){const i=['gojo','yuji','megumi','nobara','yuta','maki'].indexOf(id);a.head=(i-2)*hit*2;a.body=hit*(i%2?4:-3);a.right=kind==='wave'?-70-w*16:kind==='water'?24+hit*12:kind==='sit'?-30*hit:-45*hit;a.left=kind==='chop'||kind==='mine'?-35*hit:(i%2?12:-12)*hit;a.y=hit*(i===2?4:i===5?-3:1);return a;}
+ if(['melee','blue','red','purple','dash'].includes(kind)){switch(id){case 'gojo':a.y=-hit*4;a.right=-55*hit;a.left=kind==='purple'?-40*hit:8*hit;a.head=-3*hit;break;case 'yuji':a.x=hit*7-recover*3;a.left=-65*pulse(p,.05,.45);a.right=-85*pulse(p,.35,.85);a.body=w*8;a.lean=hit*7;break;case 'megumi':a.y=hit*3;a.left=-38*hit;a.right=38*hit;a.head=5*hit;break;case 'nobara':a.right=-100*hit+25*recover;a.left=22*hit;a.body=-9*hit;a.x=hit*3;break;case 'yuta':a.left=-30*hit;a.right=-75*hit;a.body=hit*6;a.x=hit*4;a.head=-4*hit;break;case 'maki':a.left=-75*w;a.right=75*w;a.body=hit*13;a.lean=hit*9;a.x=hit*8;a.y=-hit*3;break;case 'fly':case 'nue':a.left=-w*35;a.right=w*35;a.y=-hit*8;a.lean=hit*18;break;case 'lurker':case 'dog':a.x=hit*10;a.y=-hit*5;a.lean=hit*12;break;case 'finger':case 'panda':a.left=a.right=-90*hit;a.y=-hit*6+recover*5;break;case 'jogo':a.head=-8*hit;a.left=-25*hit;a.right=25*hit;a.y=-hit*3;break;case 'hanami':a.left=-40*hit;a.right=-60*hit;a.x=hit*2;break;case 'mahito':a.right=-110*hit;a.x=hit*12;a.body=-hit*12;break;case 'sukuna':a.left=-60*hit;a.right=60*hit;a.head=-hit*4;break;case 'rika':a.left=-80*hit;a.right=-100*hit;a.y=-hit*7;break;default:a.right=-35*hit;a.left=25*hit;a.x=hit*5;}if(kind==='dash'){a.lean+=12;a.left=a.right=35;a.y-=3;}return a;}
+ return a;
+}
+export function articulated(ctx,source,a){const part=(sx,sy,w,h,px,py,angle=0,dx=0,dy=0)=>{ctx.save();ctx.translate(px+dx,py+dy);ctx.rotate(angle*Math.PI/180);ctx.translate(-px,-py);ctx.drawImage(source,sx,sy,w,h,sx,sy,w,h);ctx.restore();};ctx.save();ctx.translate(Math.round(a.x),Math.round(a.y));ctx.translate(64,110);ctx.rotate(a.lean*Math.PI/180);ctx.translate(-64,-110);
+ // Contiguous, non-overlapping layers retain every source pixel in a neutral pose.
+ part(0,0,128,60,64,55,a.head);part(32,60,64,34,64,92,a.body);part(0,60,32,34,31,65,a.left);part(96,60,32,34,97,65,a.right);part(0,94,64,34,53,94,a.leg*180/Math.PI);part(64,94,64,34,75,94,-a.leg*180/Math.PI);ctx.restore();}
+export function signature(ctx,id,kind,p){if(!['melee','blue','red','purple','telegraph','attack'].includes(kind))return;const q=pulse(p,.15,.9);if(q<=0)return;ctx.save();ctx.globalAlpha=q;const square=(x,y,n,col)=>{ctx.fillStyle=col;ctx.fillRect(Math.round(x),Math.round(y),n,n);};const arc=(col,r)=>{for(let i=0;i<12;i++){const t=-1.5+i*.18+p*2;square(65+Math.cos(t)*r,75+Math.sin(t)*r,2,col);}};
+ if(id==='gojo'){arc(kind==='red'?'#ff7795':kind==='purple'?'#c5a1ff':'#8aeaff',27);square(94,65,5,'#e9faff');}
+ if(id==='yuji'){for(let i=0;i<4;i++)square(89+i*4,67+(i%2)*6,4,i%2?'#ec587e':'#242239');}
+ if(id==='megumi'){ctx.fillStyle='#162b3e';ctx.fillRect(34,112,60,3);for(let i=0;i<5;i++)square(40+i*11,108-q*8*(i%2),3,'#8ecbbb');}
+ if(id==='nobara'){ctx.save();ctx.translate(95,76);ctx.rotate((-1.5+p*3)*q);ctx.fillStyle='#ad805c';ctx.fillRect(-2,-24,4,27);ctx.fillStyle='#d7d5d3';ctx.fillRect(-9,-27,18,8);ctx.restore();}
+ if(id==='yuta'||id==='maki'){arc(id==='yuta'?'#c9d9ff':'#cceba9',35);}
+ if(id==='jogo'){for(let i=0;i<6;i++)square(46+i*6,28-Math.sin(p*Math.PI)*i*3,3,i%2?'#ffb36e':'#e96255');}
+ if(id==='hanami'){for(let i=0;i<5;i++)square(30+i*15,108-i%2*8*q,4,'#afcf8a');}
+ if(id==='mahito'){arc('#b6dfe6',30);}
+ if(id==='sukuna'){for(let i=0;i<12;i++){square(40+i*5,55+i*3,3,'#ff9ba6');square(40+i*5,92-i*3,2,'#f1dbd2');}}
+ if(id==='finger'||id==='panda'){for(let i=0;i<7;i++)square(32+i*9,108-Math.sin(i)*q*8,3,'#e3c897');}
+ if(id==='fly'||id==='nue'){arc(id==='nue'?'#c6b1ff':'#b7dce2',32);}
+ if(id==='dog'||id==='lurker'||id==='rika'){for(let i=0;i<3;i++)for(let j=0;j<5;j++)square(83+i*6+j*2,63+j*6,2,'#e4dee9');}ctx.restore();}
