@@ -93,3 +93,7 @@ Each hero has three independently upgraded techniques. Rank 0/1/2/3 releases 4/6
 ## Location atlas and artifacts
 
 One map control opens World / Location tabs. Local maps show terrain, collision footprints, numbered gold artifacts, attuned and unvisited checkpoints, exits, the squad, red curses and outlined bosses. World nodes show region connectivity and artifact progress. Fifteen artifacts (three in every region) sit on validated walkable tiles; interact to collect gems and squad XP once. Collection and technique ranks persist independently in Sandbox and Survival saves.
+
+## Authored character actions
+
+`character-actions.js` defines separate head, torso, left arm, right arm, leg, lean and root channels. Gojo uses a floating finger cast; Yuji alternates boxing punches; Megumi brings his hands together; Nobara snaps her hammer; Yuta draws into a sword strike; Maki rotates through a broad weapon sweep. Each hero has distinct walk and interaction curves, including waves, mining, chopping, watering and checkpoint gestures. Enemy attack accents include Jogo's eruption, Hanami's roots, Mahito's elastic reach, Sukuna's crossed slashes, wing beats and claw trails. The sprite studio and exported sheets use the same renderer.

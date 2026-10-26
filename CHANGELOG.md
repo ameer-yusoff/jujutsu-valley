@@ -31,3 +31,8 @@
 - Added a local map tab, artifact markers, region collection counts and fifteen persistent collectible relics.
 - Refined all hero/enemy motion profiles, articulated Maki's walk, animated summons and pets, and enhanced ultimate trails and radial particles.
 - Rebuilt all 71 sprite sheets and recorded motion profiles in their metadata.
+
+## Authored character action pass
+- Replaced shared hero body animation with independent joint channels and character-specific movement, interaction and combat curves.
+- Added signature hammer, casting, punch, shadow, weapon, flame, root, wing and claw accents.
+- Rebuilt sprite atlases with action-style metadata and added distinctness/finite-pose checks.
