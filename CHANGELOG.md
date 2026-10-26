@@ -36,3 +36,8 @@
 - Replaced shared hero body animation with independent joint channels and character-specific movement, interaction and combat curves.
 - Added signature hammer, casting, punch, shadow, weapon, flame, root, wing and claw accents.
 - Rebuilt sprite atlases with action-style metadata and added distinctness/finite-pose checks.
+
+## Animation quality pass
+- Added phase-offset follow-through and removed duplicate enemy walking frames.
+- Replaced frozen ultimate poses with staged action, animated summons and recovery.
+- Added rendered-frame duplicate auditing across 4,040 hero/enemy frames.

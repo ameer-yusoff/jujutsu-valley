@@ -97,3 +97,7 @@ One map control opens World / Location tabs. Local maps show terrain, collision 
 ## Authored character actions
 
 `character-actions.js` defines separate head, torso, left arm, right arm, leg, lean and root channels. Gojo uses a floating finger cast; Yuji alternates boxing punches; Megumi brings his hands together; Nobara snaps her hammer; Yuta draws into a sword strike; Maki rotates through a broad weapon sweep. Each hero has distinct walk and interaction curves, including waves, mining, chopping, watering and checkpoint gestures. Enemy attack accents include Jogo's eruption, Hanami's roots, Mahito's elastic reach, Sukuna's crossed slashes, wing beats and claw trails. The sprite studio and exported sheets use the same renderer.
+
+## Frame quality and cinematic staging
+
+Secondary motion uses phase-offset head, torso and arm curves so return steps do not repeat outgoing poses. `tests/animation-audit.cjs` compares rendered PNG frames within every hero clip in four directions and every enemy clip (4,040 frames). This checks duplicate images, not subjective perfection. Ultimate cutscenes now last 2.6 seconds and progress through anticipation, release, character-specific combinations and recovery. Summons animate throughout; reduced-motion mode suppresses camera motion and speed lines.
