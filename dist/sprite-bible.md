@@ -81,3 +81,15 @@ The journal tracks ten prerequisite-linked quests with one-time rewards. Five na
 The single map control is the minimap; keyboard M also opens it. Red points show living curses in the current loaded region, with a larger outlined marker for bosses. The region preview uses actual terrain and entity positions. Unloaded regions do not invent enemy locations.
 
 Teleportation uses shared region collision footprints, separate safe squad positions and immediate camera alignment. Combat blocks teleport for eight seconds after hostile damage; boss encounters seal travel until resolved. Sandbox and Survival retain separate browser-local saves and are chosen on a minimal pixel title menu after an animated poster loading sequence.
+
+## Character motion refinement
+
+`animation-profiles.js` defines stride, bounce, sway, breathing, attack follow-through and tempo for all six heroes, seven enemies and four companions/summons. Maki now has articulated steps as well. Walk legs pivot at the shared hip, interaction bodies reach toward tools, idle breathing stays grounded, and attacks use each character's authored combat art with distinct anticipation/recoil. Enemy animation clocks restart on state changes; hurt and telegraph poses interrupt locomotion. Summons and boop reactions animate their own frames. The 71 exported sheets include these profiles and match runtime rendering.
+
+## Radial techniques and progression
+
+Each hero has three independently upgraded techniques. Rank 0/1/2/3 releases 4/6/8/10 equally spaced echoes around the facing angle. Upgrades require levels 3/6/10 and one skill point each. Points equal `level - 1 - sum(ranks)`; existing saves gain their earned points automatically. Per rank: +15% technique damage, +0.6 world-unit echo range, +8% CE cost. Existing hero-level damage scaling still applies. The signature effect carries 65% of cast damage; the radial echo carries 35%. A shared per-cast hit set prevents ten overlapping echoes hitting one enemy ten times. Each ultimate cinematic shows the current direction count with radial particles and motion trails.
+
+## Location atlas and artifacts
+
+One map control opens World / Location tabs. Local maps show terrain, collision footprints, numbered gold artifacts, attuned and unvisited checkpoints, exits, the squad, red curses and outlined bosses. World nodes show region connectivity and artifact progress. Fifteen artifacts (three in every region) sit on validated walkable tiles; interact to collect gems and squad XP once. Collection and technique ranks persist independently in Sandbox and Survival saves.

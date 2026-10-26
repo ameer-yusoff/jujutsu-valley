@@ -25,3 +25,9 @@
 - Removed the full-width game header; kept compact region, hour and settings controls.
 - Reduced persistent tools to Quests and Actions; Studio and Rest remain available inside Actions.
 - Verified desktop, both portrait phone sizes and mobile landscape with animated-loading and no-header checks.
+
+## Radial mastery and field atlas
+- Added three skill-tree branches per hero, earned level points, and 4/6/8/10-direction technique echoes with bounded per-target damage.
+- Added a local map tab, artifact markers, region collection counts and fifteen persistent collectible relics.
+- Refined all hero/enemy motion profiles, articulated Maki's walk, animated summons and pets, and enhanced ultimate trails and radial particles.
+- Rebuilt all 71 sprite sheets and recorded motion profiles in their metadata.
