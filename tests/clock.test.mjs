@@ -1,0 +1,3 @@
+import test from 'node:test';import assert from 'node:assert/strict';import {formatGameHour} from '../dist/format.js';import {createState,Engine} from '../dist/engine.js';
+test('HUD hides minutes until the next complete hour',()=>{assert.equal(formatGameHour(8),'8:00');assert.equal(formatGameHour(8.9999),'8:00');assert.equal(formatGameHour(9),'9:00');assert.equal(formatGameHour(23.999),'23:00');assert.equal(formatGameHour(24),'0:00');});
+test('fractional time still advances and triggers night at 18:00',()=>{const e=new Engine(createState());e.s.clock=17.99;e.update(.1);assert.ok(e.s.clock>18);assert.equal(e.night,true);assert.equal(formatGameHour(e.s.clock),'18:00');});
